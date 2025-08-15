@@ -1,6 +1,8 @@
 # GreenBeretC16
 Disassembly of the infamously dreadful game for the Commodore 16. I have added better graphics and some tweaks to gameplay to see if an even slightly playable game can be salvaged.
 
+KickAssembler format.
+
 This is work in progress and contains level 1 only. I have a feeling the other levels are completely self-contained programs so any changes I make to level 1 will have to be repeated on the other three.
 
 Most of the code remains uncommented, I've only figured out the stuff I needed to make the changes below. There will also be blocks of code currently displayed as data and vice versa, disassemblers aren't perfect!
