@@ -1,0 +1,18 @@
+Output dir: E:\Dropbox\C64\Projects\Green Beret\bin
+parsing
+flex pass 1
+flex pass 2
+Output pass
+Writing prg file: E:\Dropbox\C64\Projects\Green Beret\bin\green_beret.prg
+
+Memory Map
+----------
+Default-segment:
+  $1001-$120c Base Address
+  $120d-$2994 Entry
+  $2995-$2cef Junk
+  $2cf0-$37ff Stab
+  $3800-$3fff Charset
+
+Writing Vice symbol file: E:\Dropbox\C64\Projects\Green Beret\bin\green_beret.vs
+Writing Symbol file: green_beret.sym
