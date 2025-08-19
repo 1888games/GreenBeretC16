@@ -1,0 +1,264 @@
+.namespace MAP {
+
+	CalculateMapAddresses: {
+
+		lda #<MAP_LOCATION
+		sta ZP.SourceAddress
+
+		lda #>MAP_LOCATION
+		sta ZP.SourceAddress + 1
+
+		ldy #0
+		sty ZP.CurrentSectorID
+		sty ZP.CurrentSectorNumber
+		sty ZP.ScrollSectorNumber
+		sty ZP.SectorXOffset
+		sty ZP.CurrentSectorDrawn
+
+		lda ZP.SourceAddress
+		clc
+		adc #2
+		clc
+		adc (ZP.SourceAddress), y 
+		sta ZP.SectorDataAddress
+
+		lda ZP.SourceAddress + 1
+		clc
+		adc #0
+		sta ZP.SectorDataAddress + 1
+
+
+		rts
+	}
+
+	CopyMapTo200: {
+
+
+		ldx #0
+	
+		Loop:
+
+			lda $3000, x
+			sta $0200, x
+
+			lda $3100, x
+			sta $0300, x
+
+			lda $3200, x
+			sta $0400, x
+
+			lda $3300, x
+			sta $0500, x
+
+			lda $3400, x
+			sta $0600, x
+
+			lda $3500, x
+			sta $0700, x
+
+			lda $3600, x
+			sta $0800, x
+
+			inx
+			bne Loop
+
+
+		rts
+
+	}
+
+	GetSectorData: {
+
+		lda SectorIDs, x
+		sta ZP.CurrentSectorID
+
+		asl
+		asl
+		tay
+
+		lda (ZP.SectorDataAddress), y
+		sta ZP.CurrentSectorLength
+
+		iny
+		lda (ZP.SectorDataAddress), y
+		sta ZP.Colour
+
+		iny
+		lda (ZP.SectorDataAddress), y 
+		sta ZP.SectorMapAddress
+
+		iny
+		lda (ZP.SectorDataAddress), y
+		sta ZP.SectorMapAddress + 1
+
+		cpx ZP.ScrollSectorNumber
+		bne NotFirst
+
+
+		lda ZP.CurrentSectorLength
+		sta ZP.ScrollSectorLength
+
+	NotFirst:
+
+
+		rts
+	}
+
+	DrawSector: {
+
+		ldx ZP.CurrentSectorNumber
+		
+		jsr GetSectorData
+
+		lda ZP.SectorMapAddress
+		clc
+		adc ZP.ThisSectorXOffset
+		sta LoadChar + 1
+
+		lda ZP.SectorMapAddress + 1
+		adc #0
+		sta LoadChar + 2
+
+		lda ZP.CurrentSectorLength
+		sec
+		sbc ZP.ThisSectorXOffset
+		sta ZP.CurrentSectorTruncate
+		clc
+		adc ZP.ScreenColumnsDrawn
+
+	CheckLoop:
+		cmp #40
+		bcc Okay
+
+		dec ZP.CurrentSectorTruncate
+		sec
+		sbc #1
+		jmp CheckLoop
+
+	Okay:
+
+		ldx #0
+
+	CharLoop:
+
+		LoadChar:		lda $BEEF, x
+		StoreChar:  	sta $BEEF, x
+
+
+		lda ZP.Colour
+		StoreColour: 	sta $BEEF,x 
+
+		inx
+		cpx ZP.CurrentSectorTruncate
+		bcc CharLoop
+
+
+		inc ZP.RowsDrawn
+		lda ZP.RowsDrawn
+		cmp #12
+		bcs Done
+
+		lda LoadChar + 1
+		clc
+		adc ZP.CurrentSectorLength
+		sta LoadChar + 1
+
+		lda LoadChar + 2
+		adc #0
+		sta LoadChar + 2
+
+
+		lda StoreChar + 1
+		clc
+		adc #40
+		sta StoreChar + 1
+		sta StoreColour + 1
+
+
+		lda StoreChar + 2
+		adc #0
+		sta StoreChar + 2
+		sec
+		sbc #4
+		sta StoreColour + 2
+
+		ldx #0
+
+		jmp CharLoop
+	
+	Done:
+
+
+
+
+		rts
+	}
+
+
+	FillScreen: {
+
+
+		lda ZP.ScrollSectorNumber
+		sta ZP.CurrentSectorNumber
+		lda ZP.SectorXOffset
+		sta ZP.ThisSectorXOffset
+
+		lda #0
+		sta ZP.ScreenColumnsDrawn
+		sta ZP.CurrentSectorDrawn
+		sta ZP.RowsDrawn
+
+
+	SectorLoop:
+
+		lda #<(SCREEN_RAM + (40 * 12)) 
+		sta DrawSector.StoreChar + 1
+		sta DrawSector.StoreColour + 1
+
+		lda #>(SCREEN_RAM + (40 * 12))
+		sta DrawSector.StoreChar + 2
+		sta DrawSector.StoreColour + 2
+
+		lda DrawSector.StoreChar + 1
+		clc
+		adc ZP.ScreenColumnsDrawn
+		sta DrawSector.StoreChar + 1
+		sta DrawSector.StoreColour + 1
+
+		lda DrawSector.StoreChar + 2
+		adc #0
+		sta DrawSector.StoreChar + 2
+		sec
+		sbc #4
+		sta DrawSector.StoreColour + 2
+
+
+		jsr DrawSector
+
+
+		lda ZP.ScreenColumnsDrawn
+		clc
+		adc ZP.CurrentSectorTruncate
+		sta ZP.ScreenColumnsDrawn
+
+		cmp #39
+		bcs DoneAll
+
+		lda #0
+		sta ZP.RowsDrawn
+		sta ZP.ThisSectorXOffset
+
+		inc ZP.CurrentSectorNumber
+
+		jmp SectorLoop
+
+	DoneAll:
+
+
+		rts
+	}
+
+
+
+
+}

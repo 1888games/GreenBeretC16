@@ -1,0 +1,188 @@
+.label LUMINANCE_5=$50
+.label ZERO=$0
+.label LUMINANCE_6=$60
+.label LUMINANCE_3=$30
+.label LUMINANCE_4=$40
+.label LUMINANCE_1=$10
+.label LUMINANCE_2=$20
+.label LUMINANCE_0=$0
+.label LEFT_MASK=$1
+.label DOWN_MASK=$4
+.label MAP_TEMP_LOCATION=$3000
+.label GREEN_MULT=$d
+.label GAME_MODE_OVER=$3
+.label SFX_CATCH=$2
+.label PAL_NTSC_Flag=$2a6
+.namespace SCREEN {
+  .label DrawFloor=$11f3 {
+    .label FloorLoop=$11f5
+  }
+  .label SetColoursAndMode=$11ca {
+  }
+  .label Scroll=$1205 {
+    .label NoWrap=$1228
+    .label NotNextSector=$121d
+  }
+  .label Clear=$1235 {
+    .label Loop=$1239
+  }
+}
+.label Sprites=$a00
+.label MAP_LOCATION=$200
+.label MAIN=$2000 {
+  .label upstart_end=$100c
+  .label Entry=$100e {
+  }
+  .label WaitForIRQ=$1014 {
+  }
+}
+.label GAME_MODE_DEAD=$1
+.label IRQControlRegister1=$304
+.label LUMINANCE_7=$70
+.label SFX_BUTTON=$1
+.label TextColumn=$26
+.label BANK_IN_RAM=$ff3f
+.label RED_MULT=$a
+.label SFX_THROW=$3
+.label TRUE=$1
+.label NTSC=$1
+.label WHITE_MULT=$9
+.label ZP=$2 {
+  .label FineScroll=$1c
+  .label StoredYReg=$10
+  .label ScreenColumnsDrawn=$14
+  .label RowOffset=$a
+  .label PerformFrameCodeFlag=$24
+  .label Colour=$c
+  .label CurrentID=$11
+  .label Counter=$4
+  .label ScrollSectorNumber=$1e
+  .label Column=$9
+  .label CurrentSectorLength=$18
+  .label ScreenAddress=$2
+  .label X=$12
+  .label SectorDataAddress=$20
+  .label Y=$13
+  .label CurrentSectorTruncate=$19
+  .label ThisSectorXOffset=$1d
+  .label CurrentSectorID=$16
+  .label SourceAddress=$7
+  .label StoredXReg=$d
+  .label Amount=$f
+  .label SectorMapAddress=$22
+  .label ColourAddress=$5
+  .label EndID=$e
+  .label CharID=$b
+  .label CurrentSectorNumber=$15
+  .label RowsDrawn=$1b
+  .label SectorXOffset=$17
+  .label Row=$8
+  .label ScrollSectorLength=$1f
+  .label CurrentSectorDrawn=$1a
+}
+.label SCREEN_RAM=$3400
+.label GAME_MODE_PLAY=$2
+.label RIGHT_MASK=$2
+.namespace MAP {
+  .label SectorIDs=$3001
+  .label Sector1=$302a
+  .label Sector2=$313e
+  .label Sector3=$31fe
+  .label Sector4=$331e
+  .label ForestColour=$4d
+  .label Sector5=$349e
+  .label SectorMapData=$302a
+  .label GirderColour=$4a
+  .label GetSectorData=$10dd {
+    .label NotFirst=$1100
+  }
+  .label NumSectors2=$3000
+  .label TrucksColour=$5d
+  .label SectorData=$3011
+  .label Sector6=$35be
+  .label DrawSector=$1101 {
+    .label Okay=$112b
+    .label Done=$1175
+    .label StoreChar=$1130
+    .label StoreColour=$1135
+    .label LoadChar=$112d
+    .label CheckLoop=$111f
+    .label CharLoop=$112d
+  }
+  .label CopyMapTo200=$10ad {
+    .label Loop=$10af
+  }
+  .label MissilesColour=$59
+  .label CalculateMapAddresses=$1087 {
+  }
+  .label FillScreen=$1176 {
+    .label SectorLoop=$1186
+    .label DoneAll=$11c9
+  }
+}
+.label SFX_WRONG=$5
+.label YELLOW_MULT=$f
+.label UP_MASK=$8
+.label ONE=$1
+.label INTERRUPT_VECTOR=$fffe
+.label PURPLE_MULT=$c
+.label IRQ=$101d {
+  .label SetupInterrupts=$101d {
+  }
+  .label OpenBorderIRQLine=$f9
+  .label MultiplexerIRQLine=$14
+  .label MainIRQLine=$c8
+  .label ResetBorderIRQLine=$0
+  .label MainIRQ=$1032 {
+    .label DoneIRQ=$1046
+  }
+}
+.label JOY_PORT_2=$dc00
+.label ShowDebug=$69
+.label GAME_MODE_TITLE=$0
+.label SFX_CONVEYOR=$6
+.label CYAN_MULT=$b
+.namespace GAME {
+  .label Loop=$107e {
+  }
+  .label NewLevel=$1070 {
+  }
+  .label Show=$105b {
+  }
+}
+.label SFX_CHANNEL_2=$2a9
+.label SFX_CHANNEL_1=$2a8
+.label ALL_ON=$ff
+.label Charset=$3800
+.label SFX_ALARM=$8
+.label NIL=$0
+.label TED=$27 {
+  .label RASTER_Y=$ff0b
+  .label EXTENDED_BG_COLOR_1=$ff16
+  .label EXTENDED_BG_COLOR_2=$ff17
+  .label INTERRUPT_MASK_REGISTER=$ff0a
+  .label BORDER_COLOR=$ff19
+  .label INTERRUPT_VECTOR=$fffe
+  .label ScreenRowMSB=$50
+  .label VERTICAL_CONTROL=$ff06
+  .label ScreenRowLSB=$37
+  .label BACKGROUND_COLOR=$ff15
+  .label BANK_SELECT=$dd00
+  .label CHARSET_ADDRESS=$ff13
+  .label COLOR_ADDRESS=$5
+  .label SCREEN_CONTROL_2=$ff07
+  .label MSB_On=$27
+  .label SCREEN_ADDRESS=$2
+  .label MSB_Off=$2f
+  .label COLOR_RAM=$3000
+  .label SCREEN_CONTROL=$ff06
+  .label MEMORY_SETUP=$d018
+  .label SND_1_CHAR_ROM_RAM=$ff12
+}
+.label SFX_CRASH=$4
+.label TextRow=$25
+.label VIDEO_OFFSET=$2800
+.label BLUE_MULT=$e
+.label FALSE=$0
+.label PAL=$0
+.label SFX_CORRECT=$7

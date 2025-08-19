@@ -113,14 +113,15 @@
 
         .byte $00, $ff,$00
 
+
+     * = * "Arlasoft0"
+
     GameLoop:
     L_1220:
 
-   
+    
         ldx #$f0
         txs 
-
-   
         lda $d0
         eor #%00000001
         sta $d0
@@ -131,6 +132,9 @@
        // nop
 
        // .byte $ff,$00,$ff,$00,$ff, $00
+
+
+
         .byte $ff,$00,$ff,$00,$ff,$49,$10,$2e,$20,$49
         .byte $20,$2f,$20,$79,$20,$20,$20,$79,$20,$20,$20,$79
         .fill $17, $20
@@ -253,23 +257,71 @@
         .byte $ff,$00,$ff,$00,$ff,$00,$ff,$00,$ff,$00,$ff,$00,$ff,$00,$ff,$00
         .byte $ff,$00,$ff,$00,$ff,$00,$ff,$00,$ff,$00,$ff,$00,$ff,$00,$ff,$00
         .byte $ff,$00,$ff,$00,$ff,$00,$ff,$00,$ff,$00,$ff,$00,$ff,$00
-        .fill $a8, $75
-        .byte $72,$72,$72,$72,$72,$72,$72,$72,$72,$72,$72,$72,$72,$72,$72,$72
-        .byte $75,$75,$75,$75,$75
-        .fill $15, $0
-        .byte $72
-        .fill $14, $0
-        .byte $55,$55,$41,$41,$71,$71,$71,$71,$71,$71,$71,$71,$71,$71,$71,$71
-        .byte $00,$00,$55,$55,$55,$55,$55,$41,$41
-        .fill $13, $55
-        .byte $41,$41
-        .fill $13, $55
-        .byte $41,$41
-        .fill $11, $55
-        .byte $00,$00,$41,$41,$55,$00,$00,$55,$00,$00,$55,$55,$55,$55,$55,$55
-        .byte $00,$00,$55,$55,$55,$00,$00,$41,$41,$55
-        .fill $13, $0
-        .fill $6b, $75
+
+    * = * "Tank Colours?"
+
+   * = * "Arlasoft1"
+
+    .label COL_75 = LUMINANCE_6 + RED + 8
+   .label COL_72 = LUMINANCE_5 + RED + 8
+   .label COL_71 = LUMINANCE_4 + RED + 8
+   .label COL_55 = LUMINANCE_3 + RED + 8
+   .label COL_41 = LUMINANCE_2 + RED + 8
+   .label COL_00 = LUMINANCE_1 + RED + 8
+
+      .fill $A8, COL_75
+    .fill $10, COL_72
+    .fill $05, COL_75
+    .fill $15, COL_00
+    .byte COL_72
+    .fill $14, COL_00
+    .fill $02, COL_55
+    .fill $02, COL_41
+    .fill $0C, COL_71
+    .fill $02, COL_00
+    .fill $05, COL_55
+    .fill $02, COL_41
+    .fill $13, COL_55
+    .fill $02, COL_41
+    .fill $13, COL_55
+    .fill $02, COL_41
+    .fill $11, COL_55
+    .fill $02, COL_00
+    .fill $02, COL_41
+    .byte COL_55
+    .fill $02, COL_00
+    .byte COL_55
+    .fill $02, COL_00
+    .fill $06, COL_55
+    .fill $02, COL_00
+    .fill $03, COL_55
+    .fill $02, COL_00
+    .fill $02, COL_41
+    .byte COL_55
+    .fill $13, COL_00
+    .fill $6B, COL_75
+
+
+        // .fill $a8, $75
+        // .byte $72,$72,$72,$72,$72,$72,$72,$72,$72,$72,$72,$72,$72,$72,$72,$72
+        // .byte $75,$75,$75,$75,$75
+        // .fill $15, $0
+        // .byte $72
+        // .fill $14, $0
+        // .byte $55,$55,$41,$41,$71,$71,$71,$71,$71,$71,$71,$71,$71,$71,$71,$71
+        // .byte $00,$00,$55,$55,$55,$55,$55,$41,$41
+        // .fill $13, $55
+        // .byte $41,$41
+        // .fill $13, $55
+        // .byte $41,$41
+        // .fill $11, $55
+        // .byte $00,$00,$41,$41,$55,$00,$00,$55,$00,$00,$55,$55,$55,$55,$55,$55
+        // .byte $00,$00,$55,$55,$55,$00,$00,$41,$41,$55
+        // .fill $13, $0
+        // .fill $6b, $75
+
+
+
         .byte $47,$52,$45,$45,$4e,$20,$42,$45,$52,$45,$54,$20,$32,$20,$3c,$54
         .byte $10,$ff
         .fill $15, $75
@@ -425,6 +477,9 @@
 
         //.break
 
+         * = * "Arlasoft2"
+
+
         lda #$00
         sta $ff15
         sta $ff19
@@ -513,6 +568,9 @@
 
 
         .byte $00
+
+         * = * "Arlasoft3"
+
 
     DisplayStabText:
 
@@ -668,13 +726,15 @@
         cmp #$01
         bcs L_1c52
 
+         * = * "Arlasoft4"
+
     HitByBullet:
 
     //.break
-       // rts
-      //  nop
-       // nop
-        dec LivesLeft
+        rts
+        nop
+        nop
+       // dec LivesLeft
 
         beq NoLivesLeft_1
         jmp RestartGame
@@ -746,6 +806,8 @@
         .byte $30
 
     L_1d00:
+
+     * = * "Arlasoft5"
 
         jmp CheckFireDistance
 
@@ -1276,10 +1338,10 @@
         pla 
     L_2180:
 
-        dec LivesLeft
-       // rts
-       // nop
-       // nop
+       // dec LivesLeft
+        rts
+        nop
+        nop
         beq NoLivesLeft_2
 
         jmp RestartGame   
@@ -1388,6 +1450,8 @@
 
 
         .byte $ff,$00,$ff,$00,$ff,$00,$ff,$00,$ff,$00,$ff,$00
+
+         * = * "Arlasoft6"
 
     CheckCollision:
     L_22a0:
@@ -1621,6 +1685,8 @@
         .byte $ff,$60,$ff,$00
 
     L_25a0:
+
+     * = * "Arlasoft7"
         jsr CheckCollision
         cmp #$00
         beq L_25a8
@@ -1710,6 +1776,8 @@
     L_2635:
         ora #$30
         sta ($10),y
+
+         * = * "Arlasoft8"
 
         lda #LUMINANCE_2 + PURPLE 
         sta ($12),y
@@ -2108,7 +2176,9 @@
 
         jmp CaveReturn
 
-     
+    
+     * = * "Arlasoft9"
+
      CheckFireDistance:
 
 
@@ -2660,6 +2730,10 @@ skip_block:
 
 
 
+         * = * "Arlasoft10"
+
+    DisplayPlayer:
+
     L_2e09:
         ldy #$00
     L_2e0b:
@@ -2713,6 +2787,7 @@ skip_block:
         sta ($18),y
        
 
+
  RestoreBackground_Plyr:
 
         lda $400 + $1c,x
@@ -2764,6 +2839,10 @@ skip_block:
         iny 
         sty $400 + $01
         ldy $400 + $02
+
+
+   * = * "Arlasoft11"
+
     EnemyColour:
 
         lda #LUMINANCE_3 + BLUE + 8
@@ -2867,9 +2946,13 @@ skip_block:
         .byte $30,$30,$30,$18,$0c,$00,$30,$18,$0c,$0f
         .byte $01,$04,$09,$0e,$07,$20,$13,$14
 
+        // LEVEL DATA LOOKUP TABLES?
+
+    LevelDataLookup:
+
     L_30fa:
         .byte $01,$07,$05,$20,$31,$00,$00,$32,$00,$32,$00,$32,$00,$32,$00,$32
-        .byte $f4,$34,$00,$32,$35,$36,$00,$32,$00,$16,$00,$16,$00,$16,$00,$14
+        .byte $f4,$34,$00,$32,$35,$36,$00,$32,$00,$16,$00,$16,$00,$16,$00,$14  // 1600 = colour data for trucks
         .byte $00,$14,$00,$14,$66,$00,$18,$3e,$60,$3c,$06,$7c,$18,$00,$62,$66
         .byte $0c,$18,$30,$66,$46,$00,$3c,$66,$3c,$38,$67,$66,$3f,$00,$06,$0c
         .byte $18,$00,$00,$00,$00,$00,$0c,$18,$30,$30,$30,$18,$0c,$00,$30,$18
@@ -2910,6 +2993,9 @@ skip_block:
 
     RowColours:
 
+
+   * = * "Arlasoft12"
+
         .fill 187, LUMINANCE_4 + RED + 8
         .fill 51, LUMINANCE_3 + RED + 8
         .fill 51, LUMINANCE_2 + RED + 8
@@ -2917,9 +3003,13 @@ skip_block:
 
     L_33cc:
 
-        .for(var i=0; i < 26; i++) {
-             .byte $49, $45
-        }
+        .fill 52, LUMINANCE_1 + RED + 8
+
+        // .fill 1024, LUMINANCE_1 + RED + 8
+
+        //.for(var i=0; i < 5; i++) {
+           // .byte LUMINANCE_4 + RED + 8, LUMINANCE_3 + RED + 8
+        //}
         
            
  
@@ -2994,15 +3084,36 @@ skip_block:
         .byte $ff,$ff,$ff,$ff,$ff,$ff,$ff,$ff,$ff,$20,$d0,$d0
 
     L_3620:
-        .fill $15, $ff
-        .fill $e8, $45
-        .byte $71,$71,$71,$71,$71,$71,$71,$71,$71,$71,$71,$71,$45,$45,$45,$45
-        .byte $45,$45,$45,$71,$71,$71,$71,$71,$71,$71,$71,$71,$71,$71,$71,$45
-        .byte $45,$45,$45,$45,$45,$45,$71,$71,$71,$71,$71,$71,$71,$71,$71,$71
-        .byte $71,$71,$45,$45,$45,$45,$45,$45,$45,$71,$71,$71,$71,$71,$71,$71
-        .byte $71,$71,$71,$71,$71,$45,$45,$45
-        .fill $13, $71
-        .byte $45,$45,$45,$45,$45,$45,$45,$45,$15,$00,$00,$00,$00,$00,$00,$00
+
+        //.fill $15, $ff
+
+           * = * "Arlasoft13"
+
+         .fill $15, LUMINANCE_1 + RED + 8
+        //.fill $e8, $45
+        .fill $e8, LUMINANCE_3 + RED + 8
+
+
+        // .byte $71,$71,$71,$71,$71,$71,$71,$71,$71,$71,$71,$71,$45,$45,$45,$45
+        // .byte $45,$45,$45,$71,$71,$71,$71,$71,$71,$71,$71,$71,$71,$71,$71,$45
+        // .byte $45,$45,$45,$45,$45,$45,$71,$71,$71,$71,$71,$71,$71,$71,$71,$71
+        // .byte $71,$71,$45,$45,$45,$45,$45,$45,$45,$71,$71,$71,$71,$71,$71,$71
+        // .byte $71,$71,$71,$71,$71,$45,$45,$45
+        // .fill $13, $71
+        // .byte $45,$45,$45,$45,$45,$45,$45,$45
+
+    .fill 12, LUMINANCE_1 + RED + 8    // 12 × $71
+    .fill 7, LUMINANCE_3 + RED + 8    // 7 × $45
+    .fill 12,  LUMINANCE_1 + RED + 8    // 12 × $71
+    .fill 7, LUMINANCE_3 + RED + 8    // 7 × $45
+    .fill 12, LUMINANCE_1 + RED + 8    // 12 × $71
+    .fill 7, LUMINANCE_3 + RED + 8    // 7 × $45
+    .fill 12, LUMINANCE_1 + RED + 8    // 12 × $71
+    .fill 3, LUMINANCE_3 + RED + 8    // 3 × $45
+    .fill $13, LUMINANCE_1 + RED + 8    // 19 × $71
+    .fill 8, LUMINANCE_3 + RED + 8    // 8 × $45
+
+        .byte $15,$00,$00,$00,$00,$00,$00,$00
         .byte $00,$d1
         .fill $14, $20
         .byte $d3,$d4,$d4,$d4,$d4,$d3,$d3,$d4,$d4,$d4,$d4,$d4,$d4,$d4,$d3,$d3
@@ -3015,6 +3126,9 @@ skip_block:
 
 
     * = * "Charset"
+
+
+        * = * "Arlasoft14"
 
 
     .import binary "gb - Chars.bin" 

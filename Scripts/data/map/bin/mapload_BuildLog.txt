@@ -1,0 +1,20 @@
+Output dir: E:\Dropbox\C64\Projects\Green Beret C16\Scripts\data\map\bin
+parsing
+Got 57 errors and 0 warnings while executing:
+  (E:\Dropbox\C64\Projects\Green Beret C16\Scripts\data\map\mapload.asm 5:9) Error: Unknown symbol 'MAP_LOCATION'
+  (E:\Dropbox\C64\Projects\Green Beret C16\Scripts\data\map\mapload.asm 6:7) Error: Unknown symbol 'ZP'
+  (E:\Dropbox\C64\Projects\Green Beret C16\Scripts\data\map\mapload.asm 8:9) Error: Unknown symbol 'MAP_LOCATION'
+  (E:\Dropbox\C64\Projects\Green Beret C16\Scripts\data\map\mapload.asm 9:7) Error: Unknown symbol 'ZP'
+  (E:\Dropbox\C64\Projects\Green Beret C16\Scripts\data\map\mapload.asm 12:7) Error: Unknown symbol 'ZP'
+  ...
+
+
+ CalculateMapAddresses: {
+
+  lda #<MAP_LOCATION
+        ^
+
+Error: Unknown symbol 'MAP_LOCATION'
+at line 5, column 9 in mapload.asm
+
+
