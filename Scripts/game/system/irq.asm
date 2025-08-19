@@ -4,7 +4,7 @@ IRQ: {
 	*= * "IRQ"
 
 	.label OpenBorderIRQLine = 249
-	.label MainIRQLine =200
+	.label MainIRQLine =150
 
 	.label ResetBorderIRQLine = 0
 	.label MultiplexerIRQLine = 20
@@ -39,7 +39,7 @@ IRQ: {
 		:StoreState()
 
 
-		SetDebugBorder(3)
+		//SetDebugBorder(3)
 
 			lda #TRUE
 			sta ZP.PerformFrameCodeFlag
@@ -54,7 +54,7 @@ IRQ: {
 			lda $ff09
 			sta $ff09
 
-			SetDebugBorder(0)
+			//SetDebugBorder(0)
 
 			:RestoreState()
 

@@ -80,9 +80,9 @@
 
 	NotNextSector:
 
-		inc TED.BORDER_COLOR
+		//inc TED.BORDER_COLOR
 		jsr MAP.FillScreen
-		dec TED.BORDER_COLOR
+		//dec TED.BORDER_COLOR
 
 		lda #7
 

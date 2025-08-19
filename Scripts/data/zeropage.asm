@@ -7,7 +7,6 @@ ZP: {
 	ScreenAddress:			.word 0
 	Counter:				.byte 0
 	ColourAddress:			.word 0
-
 	SourceAddress:			.byte 0
 
 	Row:					.byte 0
@@ -24,6 +23,8 @@ ZP: {
 	Y:						.byte 0
 
 
+* = * "ZP Map Data" virtual
+
 	ScreenColumnsDrawn:		.byte 0
 	CurrentSectorNumber:	.byte 0
 	CurrentSectorID:		.byte 0
@@ -39,15 +40,21 @@ ZP: {
 	ScrollSectorNumber:		.byte 0
 	ScrollSectorLength:		.byte 0
 
-* = * "Data Address" virtual
 
 	SectorDataAddress:		.word 0
 	SectorMapAddress:		.word 0
 
 
     PerformFrameCodeFlag:	.byte 0
+
+   * = * "ZP Player" virtual
+
+    Player_X:				.byte 0
+    	
+
+
+
 }
 
 
-TextRow:	.byte 0
-TextColumn:	.byte 0
+* = * "End of ZP" virtual

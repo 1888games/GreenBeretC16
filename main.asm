@@ -59,7 +59,7 @@ MAIN: {
 #import "scripts/data/map/mapload.asm"
 
 #import "scripts/game/system/screen.asm"
-
+#import "scripts/game/gameplay/player.asm"
 
 .print "bytes free: " + (($3000 - *) + ($1000 - $0C00))
 

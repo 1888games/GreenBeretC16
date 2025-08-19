@@ -23,7 +23,7 @@ Roberto Muscedere, June Tate-Gans, Pablo Roldan.
 This is free software with ABSOLUTELY NO WARRANTY.
 See the "About VICE" command for more info.
  
-Main: random seed was: 0x68a45eea
+Main: random seed was: 0x68a49775
 Main: command line was: C:\C64\Tools\Vice\xplus4.exe -8 Assets/disk.d64 -moncommands bin/main.vs bin/gb.prg
 Main: VICE system file directory: 'C:\C64\Tools\Vice\..'.
 Main: VICE system file search path: 'C:\C64\Tools\Vice;C:\C64\Tools\Vice\..'.
@@ -85,21 +85,21 @@ Monitor playback command: al C:24 .PerformFrameCodeFlag
 Monitor playback command: al C:30 .LUMINANCE_3
 Monitor playback command: al C:40 .LUMINANCE_4
 Monitor playback command: al C:10 .LUMINANCE_1
-Monitor playback command: al C:1070 .NewLevel
+Monitor playback command: al C:105e .NewLevel
 Monitor playback command: al C:20 .LUMINANCE_2
 Monitor playback command: al C:ff19 .BORDER_COLOR
 Monitor playback command: al C:0 .LUMINANCE_0
 Monitor playback command: al C:4 .DOWN_MASK
 Monitor playback command: al C:3000 .MAP_TEMP_LOCATION
 Monitor playback command: al C:1032 .MainIRQ
-Monitor playback command: al C:4a .GirderColour
-Monitor playback command: al C:112b .Okay
-Monitor playback command: al C:10dd .GetSectorData
+Monitor playback command: al C:a .GirderColour
+Monitor playback command: al C:1129 .Okay
+Monitor playback command: al C:10cb .GetSectorData
 Monitor playback command: al C:a00 .Sprites
 Monitor playback command: al C:18 .CurrentSectorLength
 Monitor playback command: al C:14 .MultiplexerIRQLine
 Monitor playback command: al C:20 .SectorDataAddress
-Monitor playback command: al C:10ad .CopyMapTo200
+Monitor playback command: al C:109b .CopyMapTo200
 Monitor playback command: al C:ff06 .SCREEN_CONTROL
 Monitor playback command: al C:16 .CurrentSectorID
 Monitor playback command: al C:1 .GAME_MODE_DEAD
@@ -109,42 +109,44 @@ Monitor playback command: al C:3001 .SectorIDs
 Monitor playback command: al C:ff16 .EXTENDED_BG_COLOR_1
 Monitor playback command: al C:ff17 .EXTENDED_BG_COLOR_2
 Monitor playback command: al C:22 .SectorMapAddress
-Monitor playback command: al C:50 .ScreenRowMSB
+Monitor playback command: al C:4f .ScreenRowMSB
 Monitor playback command: al C:b .CharID
 Monitor playback command: al C:dd00 .BANK_SELECT
 Monitor playback command: al C:3000 .NumSectors2
-Monitor playback command: al C:1135 .StoreColour
+Monitor playback command: al C:1139 .StoreColour
 Monitor playback command: al C:2 .ZP
 Monitor playback command: al C:2 .GAME_MODE_PLAY
 Monitor playback command: al C:17 .SectorXOffset
-Monitor playback command: al C:105b .Show
+Monitor playback command: al C:10ef .Luminances
+Monitor playback command: al C:1049 .Show
 Monitor playback command: al C:3000 .COLOR_RAM
 Monitor playback command: al C:ff12 .SND_1_CHAR_ROM_RAM
 Monitor playback command: al C:1c .FineScroll
 Monitor playback command: al C:10 .StoredYReg
 Monitor playback command: al C:14 .ScreenColumnsDrawn
-Monitor playback command: al C:1186 .SectorLoop
+Monitor playback command: al C:1187 .SectorLoop
 Monitor playback command: al C:f .YELLOW_MULT
 Monitor playback command: al C:8 .UP_MASK
+Monitor playback command: al C:25 .Player_X
 Monitor playback command: al C:1 .ONE
 Monitor playback command: al C:c .PURPLE_MULT
 Monitor playback command: al C:101d .IRQ
-Monitor playback command: al C:69 .ShowDebug
+Monitor playback command: al C:68 .ShowDebug
 Monitor playback command: al C:0 .GAME_MODE_TITLE
 Monitor playback command: al C:c .Colour
-Monitor playback command: al C:11c9 .DoneAll
+Monitor playback command: al C:11ca .DoneAll
 Monitor playback command: al C:5 .COLOR_ADDRESS
 Monitor playback command: al C:100e .Entry
 Monitor playback command: al C:2 .SCREEN_ADDRESS
-Monitor playback command: al C:5d .TrucksColour
+Monitor playback command: al C:d .TrucksColour
 Monitor playback command: al C:3011 .SectorData
 Monitor playback command: al C:2 .ScreenAddress
 Monitor playback command: al C:12 .X
 Monitor playback command: al C:13 .Y
 Monitor playback command: al C:2a9 .SFX_CHANNEL_2
-Monitor playback command: al C:1101 .DrawSector
+Monitor playback command: al C:10ff .DrawSector
 Monitor playback command: al C:1d .ThisSectorXOffset
-Monitor playback command: al C:2f .MSB_Off
+Monitor playback command: al C:2e .MSB_Off
 Monitor playback command: al C:112d .CharLoop
 Monitor playback command: al C:2a8 .SFX_CHANNEL_1
 Monitor playback command: al C:ff .ALL_ON
@@ -154,15 +156,15 @@ Monitor playback command: al C:3800 .Charset
 Monitor playback command: al C:8 .SFX_ALARM
 Monitor playback command: al C:15 .CurrentSectorNumber
 Monitor playback command: al C:2800 .VIDEO_OFFSET
-Monitor playback command: al C:121d .NotNextSector
+Monitor playback command: al C:121e .NotNextSector
 Monitor playback command: al C:0 .PAL
 Monitor playback command: al C:7 .SFX_CORRECT
 Monitor playback command: al C:1a .CurrentSectorDrawn
-Monitor playback command: al C:1176 .FillScreen
+Monitor playback command: al C:1177 .FillScreen
 Monitor playback command: al C:0 .ZERO
 Monitor playback command: al C:100c .upstart_end
 Monitor playback command: al C:1014 .WaitForIRQ
-Monitor playback command: al C:1175 .Done
+Monitor playback command: al C:1176 .Done
 Monitor playback command: al C:f9 .OpenBorderIRQLine
 Monitor playback command: al C:1 .LEFT_MASK
 Monitor playback command: al C:302a .SectorMapData
@@ -173,18 +175,17 @@ Monitor playback command: al C:2 .SFX_CATCH
 Monitor playback command: al C:ff13 .CHARSET_ADDRESS
 Monitor playback command: al C:4 .Counter
 Monitor playback command: al C:2a6 .PAL_NTSC_Flag
-Monitor playback command: al C:1228 .NoWrap
+Monitor playback command: al C:1223 .NoWrap
 Monitor playback command: al C:200 .MAP_LOCATION
 Monitor playback command: al C:2000 .MAIN
-Monitor playback command: al C:111f .CheckLoop
+Monitor playback command: al C:111d .CheckLoop
 Monitor playback command: al C:1 .SFX_BUTTON
-Monitor playback command: al C:26 .TextColumn
 Monitor playback command: al C:ff3f .BANK_IN_RAM
 Monitor playback command: al C:d .StoredXReg
-Monitor playback command: al C:1205 .Scroll
+Monitor playback command: al C:1206 .Scroll
 Monitor playback command: al C:a .RED_MULT
 Monitor playback command: al C:3 .SFX_THROW
-Monitor playback command: al C:1046 .DoneIRQ
+Monitor playback command: al C:103d .DoneIRQ
 Monitor playback command: al C:112d .LoadChar
 Monitor playback command: al C:1 .TRUE
 Monitor playback command: al C:ff15 .BACKGROUND_COLOR
@@ -192,7 +193,7 @@ Monitor playback command: al C:1 .NTSC
 Monitor playback command: al C:9 .WHITE_MULT
 Monitor playback command: al C:3400 .SCREEN_RAM
 Monitor playback command: al C:8 .Row
-Monitor playback command: al C:59 .MissilesColour
+Monitor playback command: al C:9 .MissilesColour
 Monitor playback command: al C:1f .ScrollSectorLength
 Monitor playback command: al C:2 .RIGHT_MASK
 Monitor playback command: al C:5 .SFX_WRONG
@@ -200,7 +201,7 @@ Monitor playback command: al C:a .RowOffset
 Monitor playback command: al C:302a .Sector1
 Monitor playback command: al C:ff0a .INTERRUPT_MASK_REGISTER
 Monitor playback command: al C:313e .Sector2
-Monitor playback command: al C:11f3 .DrawFloor
+Monitor playback command: al C:11f4 .DrawFloor
 Monitor playback command: al C:31fe .Sector3
 Monitor playback command: al C:331e .Sector4
 Monitor playback command: al C:349e .Sector5
@@ -208,41 +209,38 @@ Monitor playback command: al C:fffe .INTERRUPT_VECTOR__0
 Monitor playback command: al C:fffe .INTERRUPT_VECTOR__1
 Monitor playback command: al C:dc00 .JOY_PORT_2
 Monitor playback command: al C:ff06 .VERTICAL_CONTROL
-Monitor playback command: al C:1235 .Clear
-Monitor playback command: al C:1100 .NotFirst
+Monitor playback command: al C:1230 .Clear
+Monitor playback command: al C:10ee .NotFirst
 Monitor playback command: al C:6 .SFX_CONVEYOR
 Monitor playback command: al C:1e .ScrollSectorNumber
 Monitor playback command: al C:b .CYAN_MULT
 Monitor playback command: al C:101d .SetupInterrupts
-Monitor playback command: al C:27 .MSB_On
+Monitor playback command: al C:26 .MSB_On
 Monitor playback command: al C:9 .Column
-Monitor playback command: al C:11ca .SetColoursAndMode
+Monitor playback command: al C:11cb .SetColoursAndMode
 Monitor playback command: al C:35be .Sector6
 Monitor playback command: al C:19 .CurrentSectorTruncate
-Monitor playback command: al C:1040 .Finish__0
-Monitor playback command: al C:1055 .Finish__1
 Monitor playback command: al C:d018 .MEMORY_SETUP
 Monitor playback command: al C:0 .ResetBorderIRQLine
 Monitor playback command: al C:7 .SourceAddress
 Monitor playback command: al C:ff0b .RASTER_Y
-Monitor playback command: al C:107e .Loop__0
-Monitor playback command: al C:10af .Loop__1
-Monitor playback command: al C:1239 .Loop__2
-Monitor playback command: al C:4d .ForestColour
+Monitor playback command: al C:106c .Loop__0
+Monitor playback command: al C:109d .Loop__1
+Monitor playback command: al C:1234 .Loop__2
+Monitor playback command: al C:d .ForestColour
 Monitor playback command: al C:e .EndID
-Monitor playback command: al C:11f5 .FloorLoop
-Monitor playback command: al C:37 .ScreenRowLSB
+Monitor playback command: al C:11f6 .FloorLoop
+Monitor playback command: al C:36 .ScreenRowLSB
 Monitor playback command: al C:0 .NIL
-Monitor playback command: al C:27 .TED
+Monitor playback command: al C:26 .TED
 Monitor playback command: al C:ff07 .SCREEN_CONTROL_2
 Monitor playback command: al C:4 .SFX_CRASH
 Monitor playback command: al C:1130 .StoreChar
 Monitor playback command: al C:1b .RowsDrawn
-Monitor playback command: al C:25 .TextRow
 Monitor playback command: al C:e .BLUE_MULT
 Monitor playback command: al C:0 .FALSE
-Monitor playback command: al C:1087 .CalculateMapAddresses
-Monitor playback command: al C:c8 .MainIRQLine
+Monitor playback command: al C:1075 .CalculateMapAddresses
+Monitor playback command: al C:96 .MainIRQLine
 Closed monitor command playback file: bin/main.vs
 Sound: Closing device `dx'
 Sound: Opened device `dx', speed 48000Hz, fragment size 2.67ms, buffer size 32.00ms
@@ -250,7 +248,7 @@ Sound: reSID: MOS6581, filter on, sampling rate 48000Hz - resampling, pass to 21
 VSync: Sync reset
 Monitor UI: 'C64 Pro*' font found, enabling PETSCII output.
 Monitor UI: using font 'C64 Pro Mono 9' (Family:C64 Pro Mono, Size:9, Variations:-) PETSCII:yes Terminal Scale:1.000000
-AUTOSTART: Injecting program data at $1001 (size $09f3)
+AUTOSTART: Injecting program data at $1001 (size $0b2f)
 AUTOSTART: Ready
 AUTOSTART: Turning Warp mode off.
 AUTOSTART: Starting program.
@@ -272,21 +270,20 @@ MonitorYPos=662
 MonitorWidth=848
 MonitorHeight=603
 MonitorFont="C64 Pro Mono 9"
-Window0Height=1210
-Window0Width=1306
+Window0Height=674
+Window0Width=797
 Window0Xpos=1711
 Window0Ypos=50
 FunctionLowName=""
 FunctionHighName=""
 RamSize=16
-TEDBorderMode=2
 Acia1Enable=0
 AutostartPrgMode=1
 Drive8TrueEmulation=0
 DriveSoundEmulationVolume=1612
 FFMPEGVideoBitrate=200000
 
--default -logfile "E:\Dropbox\C64\Projects\Green Beret C16/bin/main_ViceLog.txt" +confirmonexit -saveres -monitorfont "C64 Pro Mono 9" -monitorxpos "1821" -monitorypos "662" -monitorwidth "848" -monitorheight "603" -windowxpos "1711" -windowypos "50" -windowwidth "1306" -windowheight "1210" -functionlo "" -functionhi "" -ramsize "16" -TEDborders "2" +acia -autostartprgmode "1" +drive8truedrive -drivesoundvolume "1612" -ffmpegvideobitrate "200000"
+-default -logfile "E:\Dropbox\C64\Projects\Green Beret C16/bin/main_ViceLog.txt" +confirmonexit -saveres -monitorfont "C64 Pro Mono 9" -monitorxpos "1821" -monitorypos "662" -monitorwidth "848" -monitorheight "603" -windowxpos "1711" -windowypos "50" -windowwidth "797" -windowheight "674" -functionlo "" -functionhi "" -ramsize "16" +acia -autostartprgmode "1" +drive8truedrive -drivesoundvolume "1612" -ffmpegvideobitrate "200000"
 Mainlock: VICE thread initiating shutdown
 Mainlock: VICE thread is exiting
 Main: VICE thread has been joined.

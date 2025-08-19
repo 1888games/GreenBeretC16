@@ -104,6 +104,11 @@
 		rts
 	}
 
+	Luminances: 
+
+		.byte LUMINANCE_7, LUMINANCE_7, LUMINANCE_6, LUMINANCE_6, LUMINANCE_5, LUMINANCE_5, LUMINANCE_4, LUMINANCE_4, LUMINANCE_3, LUMINANCE_3, LUMINANCE_2, LUMINANCE_2, LUMINANCE_1, LUMINANCE_0, LUMINANCE_7, LUMINANCE_7
+	
+
 	DrawSector: {
 
 		ldx ZP.CurrentSectorNumber
@@ -138,24 +143,27 @@
 	Okay:
 
 		ldx #0
+		ldy #0
 
 	CharLoop:
+
+		//sty ZP.RowsDrawn
 
 		LoadChar:		lda $BEEF, x
 		StoreChar:  	sta $BEEF, x
 
 
 		lda ZP.Colour
+		clc
+		adc Luminances, y
 		StoreColour: 	sta $BEEF,x 
 
 		inx
 		cpx ZP.CurrentSectorTruncate
 		bcc CharLoop
 
-
-		inc ZP.RowsDrawn
-		lda ZP.RowsDrawn
-		cmp #12
+		iny
+		cpy #12
 		bcs Done
 
 		lda LoadChar + 1

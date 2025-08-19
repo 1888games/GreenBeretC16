@@ -1,10 +1,15 @@
 
 .namespace MAP {
 
-	.label GirderColour = LUMINANCE_4 + RED + 8
-	.label ForestColour = LUMINANCE_4 + GREEN + 8
-	.label TrucksColour = LUMINANCE_5 + GREEN + 8
-	.label MissilesColour = LUMINANCE_5 + WHITE + 8
+	//.label GirderColour = LUMINANCE_4 + RED + 8
+	//.label ForestColour = LUMINANCE_4 + GREEN + 8
+	//.label TrucksColour = LUMINANCE_5 + GREEN + 8
+	//.label MissilesColour = LUMINANCE_5 + WHITE + 8
+
+	.label GirderColour = LUMINANCE_0 + RED + 8
+	.label ForestColour = LUMINANCE_0 + GREEN + 8
+	.label TrucksColour = LUMINANCE_0 + GREEN + 8
+	.label MissilesColour = LUMINANCE_0 + WHITE + 8
 
 	* = $3000
 	
