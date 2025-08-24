@@ -20,6 +20,7 @@
 
 .label BANK_IN_RAM = $FF3F
 
+.label CHARSET_ADDRESS = $3800
 
 .label LUMINANCE_0 = $00    // Black/Off
 .label LUMINANCE_1 = $10    // Very Dark
@@ -81,7 +82,8 @@
 
 
 
-
+.label STATE_WALK_RIGHT = 0
+.label STATE_WALK_LEFT = 1
 
 
 

@@ -3,31 +3,46 @@
 .label LUMINANCE_6=$60
 .label LUMINANCE_3=$30
 .label LUMINANCE_4=$40
+.label INPUT=$1819 {
+  .label joyLeftMask=$4
+  .label joyRightMask=$8
+  .label ReadJoystick=$1819 {
+  }
+  .label joyFireMask=$40
+  .label joyDownMask=$2
+  .label joyUpMask=$1
+}
 .label LUMINANCE_1=$10
 .label LUMINANCE_2=$20
 .label LUMINANCE_0=$0
 .label LEFT_MASK=$1
 .label DOWN_MASK=$4
 .label MAP_TEMP_LOCATION=$3000
+.label FACE_LEFT_OFFSET=$2c
 .label GREEN_MULT=$d
+.label CHARSET_ADDRESS=$3800
 .label GAME_MODE_OVER=$3
 .label SFX_CATCH=$2
+.label STATE_WALK_LEFT=$1
 .label PAL_NTSC_Flag=$2a6
 .namespace SCREEN {
-  .label DrawFloor=$11f4 {
-    .label FloorLoop=$11f6
+  .label DrawFloor=$120c {
+    .label FloorLoop=$120e
   }
-  .label SetColoursAndMode=$11cb {
+  .label SetColoursAndMode=$11e3 {
   }
-  .label Scroll=$1206 {
-    .label NoWrap=$1223
-    .label NotNextSector=$121e
+  .label Scroll=$121e {
+    .label NoRedraw=$129a
+    .label NoWrap=$123f
+    .label DoScroll=$1223
+    .label NotNextSector=$123d
   }
-  .label Clear=$1230 {
-    .label Loop=$1234
+  .label Clear=$129b {
+    .label Loop=$129f
   }
 }
 .label Sprites=$a00
+.label MAX_ENEMIES=$9
 .label MAP_LOCATION=$200
 .label MAIN=$2000 {
   .label upstart_end=$100c
@@ -43,42 +58,106 @@
 .label BANK_IN_RAM=$ff3f
 .label RED_MULT=$a
 .label SFX_THROW=$3
+.label STATE_WALK_RIGHT=$0
 .label TRUE=$1
+.namespace PLAYER {
+  .label Control=$134d {
+    .label NotLeft=$1365
+    .label NotFire=$1370
+    .label NotRight=$1359
+  }
+  .label FrameUpdate=$12d6 {
+    .label Ready=$12e1
+    .label NoDraw=$12f9
+    .label CheckOddEven=$12dc
+    .label CanMove=$12e8
+  }
+  .label Move=$1371 {
+  }
+  .label GoLeft=$132a {
+    .label NotMoved=$1346
+  }
+  .label Initialise=$12af {
+  }
+  .label GoRight=$12fa {
+    .label NotMoved=$1323
+    .label NoScroll=$131e
+    .label Restore=$1320
+  }
+}
 .label NTSC=$1
 .label WHITE_MULT=$9
+.label PLAYER_CHAR_START=$b7
 .label ZP=$2 {
-  .label FineScroll=$1c
-  .label StoredYReg=$10
-  .label ScreenColumnsDrawn=$14
-  .label RowOffset=$a
-  .label PerformFrameCodeFlag=$24
-  .label Player_X=$25
-  .label Colour=$c
-  .label CurrentID=$11
+  .label SpriteID=$e
+  .label PlayerColour=$67
+  .label PerformFrameCodeFlag=$2a
+  .label SpriteStoredColours=$e9
+  .label EnemyX=$2c
+  .label EnemyTime=$5e
+  .label EnemyY=$36
   .label Counter=$4
-  .label ScrollSectorNumber=$1e
-  .label Column=$9
-  .label CurrentSectorLength=$18
-  .label ScreenAddress=$2
-  .label X=$12
-  .label SectorDataAddress=$20
-  .label Y=$13
-  .label CurrentSectorTruncate=$19
-  .label ThisSectorXOffset=$1d
-  .label CurrentSectorID=$16
-  .label SourceAddress=$7
-  .label StoredXReg=$d
-  .label Amount=$f
-  .label SectorMapAddress=$22
-  .label ColourAddress=$5
-  .label EndID=$e
+  .label SpriteStoredChars=$99
+  .label CurrentSectorLength=$1a
+  .label SectorDataAddress=$22
+  .label EnemyOffset=$4a
+  .label CurrentSectorID=$18
+  .label FrameSwitch=$5
+  .label SpriteCharAddress=$26
+  .label SpriteBullets=$71
+  .label SectorMapAddress=$24
+  .label SpriteX=$2b
   .label CharID=$b
-  .label CurrentSectorNumber=$15
-  .label RowsDrawn=$1b
-  .label SectorXOffset=$17
-  .label Row=$8
-  .label ScrollSectorLength=$1f
-  .label CurrentSectorDrawn=$1a
+  .label PlayerMoved=$8f
+  .label SpriteY=$35
+  .label JOY_READING=$15
+  .label EnemyDirty=$86
+  .label PlayerY=$35
+  .label SectorXOffset=$19
+  .label PlayerX=$2b
+  .label PlayerTimer=$53
+  .label ScrollSectorLength=$21
+  .label SpriteState=$3f
+  .label SpriteOffset=$49
+  .label FineScroll=$1e
+  .label ScreenColumnsDrawn=$16
+  .label BackgroundCharAddress=$9
+  .label Frame=$d
+  .label ScrollFlag=$14
+  .label PlayerDirty=$85
+  .label Colour=$c
+  .label SpriteTime=$5d
+  .label PlayerOffset=$49
+  .label SpriteFrame=$7b
+  .label PlayerFrame=$7b
+  .label ScrollSectorNumber=$20
+  .label PlayerTime=$5d
+  .label SpriteDirty=$85
+  .label EnemyMoved=$90
+  .label ScreenAddress=$2
+  .label X=$10
+  .label Y=$11
+  .label CurrentSectorTruncate=$1b
+  .label EnemyState=$40
+  .label ThisSectorXOffset=$1f
+  .label EnemyColour=$68
+  .label PlayerBullets=$71
+  .label SourceAddress=$8
+  .label EnemyTimer=$54
+  .label PlayerState=$3f
+  .label Amount=$f
+  .label ColourAddress=$6
+  .label Temp2=$13
+  .label EnemyBullets=$72
+  .label Temp1=$12
+  .label CurrentSectorNumber=$17
+  .label RowsDrawn=$1d
+  .label SpriteMoved=$8f
+  .label SpriteTimer=$53
+  .label SpriteDataAddress=$28
+  .label CurrentSectorDrawn=$1c
+  .label EnemyFrame=$7c
+  .label SpriteColour=$67
 }
 .label SCREEN_RAM=$3400
 .label GAME_MODE_PLAY=$2
@@ -93,38 +172,39 @@
   .label Sector5=$349e
   .label SectorMapData=$302a
   .label GirderColour=$a
-  .label GetSectorData=$10cb {
-    .label NotFirst=$10ee
+  .label GetSectorData=$10e3 {
+    .label NotFirst=$1106
   }
   .label NumSectors2=$3000
   .label TrucksColour=$d
   .label SectorData=$3011
   .label Sector6=$35be
-  .label Luminances=$10ef
-  .label DrawSector=$10ff {
-    .label Okay=$1129
-    .label Done=$1176
-    .label StoreChar=$1130
-    .label StoreColour=$1139
-    .label LoadChar=$112d
-    .label CheckLoop=$111d
-    .label CharLoop=$112d
+  .label Luminances=$1107
+  .label DrawSector=$1117 {
+    .label Okay=$1141
+    .label Done=$118e
+    .label StoreChar=$1148
+    .label StoreColour=$1151
+    .label LoadChar=$1145
+    .label CheckLoop=$1135
+    .label CharLoop=$1145
   }
-  .label CopyMapTo200=$109b {
-    .label Loop=$109d
+  .label CopyMapTo200=$10b3 {
+    .label Loop=$10b5
   }
   .label MissilesColour=$9
-  .label CalculateMapAddresses=$1075 {
+  .label CalculateMapAddresses=$108d {
   }
-  .label FillScreen=$1177 {
-    .label SectorLoop=$1187
-    .label DoneAll=$11ca
+  .label FillScreen=$118f {
+    .label SectorLoop=$119f
+    .label DoneAll=$11e2
   }
 }
 .label SFX_WRONG=$5
 .label YELLOW_MULT=$f
 .label UP_MASK=$8
 .label ONE=$1
+.label STATE_CLIMB=$2
 .label INTERRUPT_VECTOR=$fffe
 .label PURPLE_MULT=$c
 .label IRQ=$101d {
@@ -132,57 +212,112 @@
   }
   .label OpenBorderIRQLine=$f9
   .label MultiplexerIRQLine=$14
-  .label MainIRQLine=$96
+  .label MainIRQLine=$f0
   .label ResetBorderIRQLine=$0
   .label MainIRQ=$1032 {
-    .label DoneIRQ=$103d
+    .label DoneIRQ=$1049
   }
 }
 .label JOY_PORT_2=$dc00
-.label ShowDebug=$68
+.label ShowDebug=$17b
+.label STATE_WALK=$1
 .label GAME_MODE_TITLE=$0
 .label SFX_CONVEYOR=$6
 .label CYAN_MULT=$b
 .namespace GAME {
-  .label Loop=$106c {
+  .label Loop=$107b {
   }
-  .label NewLevel=$105e {
+  .label NewLevel=$106d {
   }
-  .label Show=$1049 {
+  .label Show=$1055 {
   }
 }
+.label SCROLL_THRESHOLD=$7
 .label SFX_CHANNEL_2=$2a9
+.label NUM_CHARS_FACE=$2c
 .label SFX_CHANNEL_1=$2a8
 .label ALL_ON=$ff
+.label MAX_SPRITES=$a
 .label Charset=$3800
+.namespace SPRITE {
+  .label MiddleRightCharsLSB=$160b
+  .label BottomLeftCharsLSB=$1629
+  .label MiddleRightCharsMSB=$16bf
+  .label BottomLeftCharsMSB=$16dd
+  .label Draw=$13c2 {
+    .label DontDraw=$13dc
+  }
+  .label CopySpriteData=$14c2 {
+    .label NoGun=$14e3
+  }
+  .label SpriteCharAddress_MSB=$13b8
+  .label BL=$1e
+  .label SpriteCharAddress_LSB=$13ae
+  .label RestoreChars=$1420 {
+  }
+  .label DirOffset=$14c0
+  .label BackupChars=$13dd {
+    .label DoBackup=$13e2
+  }
+  .label PlaceChars=$145a {
+  }
+  .label TopRightCharsLSB=$15cf
+  .label MaskTable=$1719
+  .label TopRightCharsMSB=$1683
+  .label GetBgCharAddress=$149c {
+  }
+  .label RowStart_LSB=$1372
+  .label RowStart_MSB=$138b
+  .label TopLeftCharsMSB=$1665
+  .label TopLeftCharsLSB=$15b1
+  .label BottomRightCharsMSB=$16fb
+  .label SpriteStart=$13a4
+  .label MiddleLeftCharsMSB=$16a1
+  .label MiddleLeftCharsLSB=$15ed
+  .label CalculatePositionAddresses=$1594 {
+  }
+  .label BottomRightCharsLSB=$1647
+  .label CopyCharBytes=$1570 {
+    .label Loop=$1572
+    .label Branch=$1572 {
+      .label Dest=$1588
+      .label Bg=$1574
+      .label Source=$1579
+    }
+  }
+}
 .label SFX_ALARM=$8
+.label PLAYER_SPRITE_ID=$0
 .label NIL=$0
-.label TED=$26 {
+.label FACE_RIGHT_OFFSET=$0
+.label TED=$139 {
   .label RASTER_Y=$ff0b
   .label EXTENDED_BG_COLOR_1=$ff16
   .label EXTENDED_BG_COLOR_2=$ff17
   .label INTERRUPT_MASK_REGISTER=$ff0a
   .label BORDER_COLOR=$ff19
   .label INTERRUPT_VECTOR=$fffe
-  .label ScreenRowMSB=$4f
+  .label ScreenRowMSB=$162
   .label VERTICAL_CONTROL=$ff06
-  .label ScreenRowLSB=$36
+  .label ScreenRowLSB=$149
   .label BACKGROUND_COLOR=$ff15
   .label BANK_SELECT=$dd00
   .label CHARSET_ADDRESS=$ff13
-  .label COLOR_ADDRESS=$5
+  .label COLOR_ADDRESS=$6
   .label SCREEN_CONTROL_2=$ff07
-  .label MSB_On=$26
+  .label MSB_On=$139
   .label SCREEN_ADDRESS=$2
-  .label MSB_Off=$2e
+  .label MSB_Off=$141
   .label COLOR_RAM=$3000
   .label SCREEN_CONTROL=$ff06
   .label MEMORY_SETUP=$d018
   .label SND_1_CHAR_ROM_RAM=$ff12
 }
 .label SFX_CRASH=$4
+.label STATE_IDLE=$0
 .label VIDEO_OFFSET=$2800
 .label BLUE_MULT=$e
 .label FALSE=$0
 .label PAL=$0
 .label SFX_CORRECT=$7
+.label FLOOR_ROW=$17

@@ -60,9 +60,20 @@
 
 	Scroll: {
 
+		//rts
+
+		lda ZP.ScrollFlag
+		bne DoScroll
+
+		rts
+
+	DoScroll:
+
+		dec ZP.ScrollFlag
+
 		lda ZP.FineScroll
 		sec
-		sbc #1
+		sbc #4
 		bpl NoWrap
 
 		lda ZP.SectorXOffset
@@ -81,7 +92,7 @@
 	NotNextSector:
 
 		//inc TED.BORDER_COLOR
-		jsr MAP.FillScreen
+		
 		//dec TED.BORDER_COLOR
 
 		lda #7
@@ -94,8 +105,25 @@
 		and #%11111000
 		ora ZP.FineScroll
 		sta $FF07
+		
+		lda ZP.FineScroll
+		cmp #7
+		bne NoRedraw
 
+		jsr MAP.FillScreen
 
+	.for(var i=0; i<10; i++) {
+		
+		inc ZP.PlayerDirty
+
+		ldx #0
+		jsr SPRITE.Draw
+	}
+	
+
+		
+
+	NoRedraw:
 
 
 		rts

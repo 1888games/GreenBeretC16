@@ -1,26 +1,33 @@
 *=$02 "Temp vars zero page" virtual
 
-
+.label MAX_ENEMIES = 9
+.label MAX_SPRITES = MAX_ENEMIES + 1
 
 ZP: {
 
 	ScreenAddress:			.word 0
 	Counter:				.byte 0
+	FrameSwitch:			.byte 0
 	ColourAddress:			.word 0
 	SourceAddress:			.byte 0
+	BackgroundCharAddress:	.word 0
 
-	Row:					.byte 0
-	Column:					.byte 0
-	RowOffset:				.byte 0
 	CharID:					.byte 0
 	Colour:					.byte 0
-	StoredXReg:				.byte 0
-	EndID:					.byte 0
+	Frame:					.byte 0
+	SpriteID:				.byte 0
+
 	Amount:					.byte 0
-	StoredYReg:				.byte 0
-	CurrentID:				.byte 0
 	X:						.byte 0
 	Y:						.byte 0
+	Temp1:					.byte 0
+	Temp2:					.byte 0
+	ScrollFlag:				.byte 0
+
+* = * "Joystick" virtual
+
+	JOY_READING:			.byte 0
+
 
 
 * = * "ZP Map Data" virtual
@@ -43,18 +50,70 @@ ZP: {
 
 	SectorDataAddress:		.word 0
 	SectorMapAddress:		.word 0
+	SpriteCharAddress:		.word 0
+	SpriteDataAddress:		.word 0
+
 
 
     PerformFrameCodeFlag:	.byte 0
 
-   * = * "ZP Player" virtual
+   * = * "ZP Sprite Data" virtual
 
-    Player_X:				.byte 0
-    	
+    SpriteX:				
+    PlayerX:				.byte 0
+    EnemyX:					.fill MAX_ENEMIES, 0
 
+    SpriteY:
+    PlayerY:				.byte 0
+    EnemyY:					.fill MAX_ENEMIES, 0
+
+    SpriteState:			
+    PlayerState:			.byte 0
+    EnemyState:				.fill MAX_ENEMIES, 0
+
+    SpriteOffset:			
+    PlayerOffset:			.byte 0
+    EnemyOffset:			.fill MAX_ENEMIES, 0
+
+    SpriteTimer:			
+    PlayerTimer:			.byte 0
+    EnemyTimer:				.fill MAX_ENEMIES, 0
+
+    SpriteTime:				
+    PlayerTime:				.byte 0
+    EnemyTime:				.fill MAX_ENEMIES, 0
+
+    SpriteColour:
+    PlayerColour:			.byte 0
+    EnemyColour:			.fill MAX_ENEMIES, 0
+
+    SpriteBullets:			
+    PlayerBullets:			.byte 0
+    EnemyBullets:			.fill MAX_ENEMIES, 0
+
+    SpriteFrame:	
+    PlayerFrame:			.byte 0
+    EnemyFrame:				.fill MAX_ENEMIES, 0
+
+    SpriteDirty:
+    PlayerDirty:			.byte 0
+    EnemyDirty:				.fill MAX_ENEMIES, 0
+
+    SpriteMoved:	
+    PlayerMoved:			.byte 0
+    EnemyMoved:				.fill MAX_ENEMIES, 0
+
+
+
+
+    SpriteStoredChars:		.fill MAX_SPRITES * 8, 0
+    SpriteStoredColours:	.fill MAX_SPRITES * 8, 0
+
+
+	* = * "End of ZP" virtual
 
 
 }
 
 
-* = * "End of ZP" virtual
+

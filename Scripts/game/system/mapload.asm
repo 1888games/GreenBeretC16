@@ -1,5 +1,7 @@
 .namespace MAP {
 
+	* = * "Mapload"
+
 	CalculateMapAddresses: {
 
 		lda #<MAP_LOCATION

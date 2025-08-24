@@ -31,7 +31,7 @@ MAIN: {
 	Entry: {
 
 		jsr IRQ.SetupInterrupts
-
+ 
 
 
 		jmp GAME.Show
@@ -56,12 +56,18 @@ MAIN: {
 
 #import "scripts/game/system/irq.asm"
 #import "scripts/game/screens/game.asm"
-#import "scripts/data/map/mapload.asm"
+#import "scripts/game/system/mapload.asm"
 
 #import "scripts/game/system/screen.asm"
 #import "scripts/game/gameplay/player.asm"
+#import "scripts/game/system/sprites.asm"
+#import "scripts/data/sprite_data.asm"
+#import "scripts/data/mask.asm"
+#import "scripts/common/input.asm"
 
-.print "bytes free: " + (($3000 - *) + ($1000 - $0C00))
+
+
+.print "bytes free: " + (($3000 - *))
 
 * = $0A00 "Sprites"
 
@@ -74,13 +80,13 @@ Sprites:
 .fill 2048, 64
 
 
-* = $3000 "Colour RAM" virtual
+* = TED.COLOR_RAM "Colour RAM" virtual
 .fill 1024, 64
 
-* = $3400 "Screen RAM" virtual
+* = SCREEN_RAM "Screen RAM" virtual
 .fill 1024, 96
  
-* = $3800 "Charset Game"
+* = CHARSET_ADDRESS "Charset Game"
 
 Charset:
 

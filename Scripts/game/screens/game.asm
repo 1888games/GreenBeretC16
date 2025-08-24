@@ -17,6 +17,8 @@
 		jsr SCREEN.DrawFloor
 
 		jsr MAP.FillScreen
+
+		jsr PLAYER.Initialise
 		
 		jmp Loop
 	}
@@ -34,6 +36,8 @@
 		sta ZP.ScrollSectorNumber
 		sta ZP.SectorXOffset
 
+		
+
 
 		rts
 	}
@@ -44,7 +48,14 @@
 	
 		jsr MAIN.WaitForIRQ
 
+		inc TED.BORDER_COLOR
+
+		//jsr SCREEN.Scroll
+
+		jsr PLAYER.FrameUpdate 
 		jsr SCREEN.Scroll
+
+		dec TED.BORDER_COLOR
 
 		jmp Loop
 	}
