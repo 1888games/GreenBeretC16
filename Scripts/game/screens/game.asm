@@ -29,9 +29,8 @@
 
 		jsr MAP.CalculateMapAddresses
 
-		lda #7
-		sta ZP.FineScroll
-
+		jsr ResetFineScroll
+		
 		lda #0
 		sta ZP.ScrollSectorNumber
 		sta ZP.SectorXOffset
@@ -42,20 +41,32 @@
 		rts
 	}
 
+	ResetFineScroll: {
+
+		lda #7
+		sta ZP.FineScroll
+
+		lda $FF07
+		and #%11111000
+		ora ZP.FineScroll
+		sta $FF07
+
+		rts
+	}
 
 	Loop: {
 
 	
 		jsr MAIN.WaitForIRQ
 
-		inc TED.BORDER_COLOR
+		//inc TED.BORDER_COLOR
 
 		//jsr SCREEN.Scroll
 
 		jsr PLAYER.FrameUpdate 
-		jsr SCREEN.Scroll
+		//jsr SCREEN.Scroll
 
-		dec TED.BORDER_COLOR
+		//dec TED.BORDER_COLOR
 
 		jmp Loop
 	}
