@@ -3,7 +3,7 @@
 .label PLAYER_SPRITE_ID = 0
 
 .label PLAYER_CHAR_START = 183
-.label SCROLL_THRESHOLD = 7
+.label SCROLL_THRESHOLD = 16
 
 .namespace PLAYER {
 

@@ -108,13 +108,18 @@
 		
 		lda ZP.FineScroll
 		cmp #7
-		bne NoRedraw
+		beq Scroll
+
+		jmp NoRedraw
+
+	Scroll:
 
 		jsr MAP.FillScreen
 
-	.for(var i=0; i<10; i++) {
-		
+	.for(var i=0; i<1; i++) {
+
 		inc ZP.PlayerDirty
+		//inc TED.BORDER_COLOR
 
 		ldx #0
 		jsr SPRITE.Draw

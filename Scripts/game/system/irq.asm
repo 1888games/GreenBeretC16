@@ -4,7 +4,7 @@ IRQ: {
 	*= * "IRQ"
 
 	.label OpenBorderIRQLine = 249
-	.label MainIRQLine =240
+	.label MainIRQLine =200
 
 	.label ResetBorderIRQLine = 0
 	.label MultiplexerIRQLine = 20
