@@ -118,9 +118,9 @@
 		bcc NoScroll
 
 		lda #1
-		sta ZP.ScrollFlag
+		//sta ZP.ScrollFlag
 
-		jmp Restore
+		///jmp Restore
 
 	NoScroll:
 

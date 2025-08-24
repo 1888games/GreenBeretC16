@@ -3,10 +3,10 @@
 .label LUMINANCE_6=$60
 .label LUMINANCE_3=$30
 .label LUMINANCE_4=$40
-.label INPUT=$17dd {
+.label INPUT=$17d8 {
   .label joyLeftMask=$4
   .label joyRightMask=$8
-  .label ReadJoystick=$17dd {
+  .label ReadJoystick=$17d8 {
   }
   .label joyFireMask=$40
   .label joyDownMask=$2
@@ -62,10 +62,10 @@
 .label STATE_WALK_RIGHT=$0
 .label TRUE=$1
 .namespace PLAYER {
-  .label Control=$1311 {
-    .label NotLeft=$1329
-    .label NotFire=$1334
-    .label NotRight=$131d
+  .label Control=$130c {
+    .label NotLeft=$1324
+    .label NotFire=$132f
+    .label NotRight=$1318
   }
   .label FrameUpdate=$129a {
     .label Ready=$12a5
@@ -73,17 +73,17 @@
     .label CheckOddEven=$12a0
     .label CanMove=$12ac
   }
-  .label Move=$1335 {
+  .label Move=$1330 {
   }
-  .label GoLeft=$12ee {
-    .label NotMoved=$130a
+  .label GoLeft=$12e9 {
+    .label NotMoved=$1305
   }
   .label Initialise=$1273 {
   }
   .label GoRight=$12be {
-    .label NotMoved=$12e7
-    .label NoScroll=$12e2
-    .label Restore=$12e4
+    .label NotMoved=$12e2
+    .label NoScroll=$12dd
+    .label Restore=$12df
   }
 }
 .label NTSC=$1
@@ -241,49 +241,49 @@
 .label MAX_SPRITES=$a
 .label Charset=$3800
 .namespace SPRITE {
-  .label MiddleRightCharsLSB=$15cf
-  .label BottomLeftCharsLSB=$15ed
-  .label MiddleRightCharsMSB=$1683
-  .label BottomLeftCharsMSB=$16a1
-  .label Draw=$1386 {
-    .label DontDraw=$13a0
+  .label MiddleRightCharsLSB=$15ca
+  .label BottomLeftCharsLSB=$15e8
+  .label MiddleRightCharsMSB=$167e
+  .label BottomLeftCharsMSB=$169c
+  .label Draw=$1381 {
+    .label DontDraw=$139b
   }
-  .label CopySpriteData=$1486 {
-    .label NoGun=$14a7
+  .label CopySpriteData=$1481 {
+    .label NoGun=$14a2
   }
-  .label SpriteCharAddress_MSB=$137c
+  .label SpriteCharAddress_MSB=$1377
   .label BL=$1e
-  .label SpriteCharAddress_LSB=$1372
-  .label RestoreChars=$13e4 {
+  .label SpriteCharAddress_LSB=$136d
+  .label RestoreChars=$13df {
   }
-  .label DirOffset=$1484
-  .label BackupChars=$13a1 {
-    .label DoBackup=$13a6
+  .label DirOffset=$147f
+  .label BackupChars=$139c {
+    .label DoBackup=$13a1
   }
-  .label PlaceChars=$141e {
+  .label PlaceChars=$1419 {
   }
-  .label TopRightCharsLSB=$1593
-  .label MaskTable=$16dd
-  .label TopRightCharsMSB=$1647
-  .label GetBgCharAddress=$1460 {
+  .label TopRightCharsLSB=$158e
+  .label MaskTable=$16d8
+  .label TopRightCharsMSB=$1642
+  .label GetBgCharAddress=$145b {
   }
-  .label RowStart_LSB=$1336
-  .label RowStart_MSB=$134f
-  .label TopLeftCharsMSB=$1629
-  .label TopLeftCharsLSB=$1575
-  .label BottomRightCharsMSB=$16bf
-  .label SpriteStart=$1368
-  .label MiddleLeftCharsMSB=$1665
-  .label MiddleLeftCharsLSB=$15b1
-  .label CalculatePositionAddresses=$1558 {
+  .label RowStart_LSB=$1331
+  .label RowStart_MSB=$134a
+  .label TopLeftCharsMSB=$1624
+  .label TopLeftCharsLSB=$1570
+  .label BottomRightCharsMSB=$16ba
+  .label SpriteStart=$1363
+  .label MiddleLeftCharsMSB=$1660
+  .label MiddleLeftCharsLSB=$15ac
+  .label CalculatePositionAddresses=$1553 {
   }
-  .label BottomRightCharsLSB=$160b
-  .label CopyCharBytes=$1534 {
-    .label Loop=$1536
-    .label Branch=$1536 {
-      .label Dest=$154c
-      .label Bg=$1538
-      .label Source=$153d
+  .label BottomRightCharsLSB=$1606
+  .label CopyCharBytes=$152f {
+    .label Loop=$1531
+    .label Branch=$1531 {
+      .label Dest=$1547
+      .label Bg=$1533
+      .label Source=$1538
     }
   }
 }
