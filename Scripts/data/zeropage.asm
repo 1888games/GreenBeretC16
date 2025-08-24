@@ -40,6 +40,9 @@ ZP: {
 	CurrentSectorTruncate:	.byte 0
 	CurrentSectorDrawn:		.byte 0
 	RowsDrawn:				.byte 0
+
+* = * "Fine Scroll" virtual
+
 	FineScroll:				.byte 0
 
 	ThisSectorXOffset:		.byte 0

@@ -21,6 +21,10 @@
 		sta ZP.PlayerOffset
 		sta ZP.PlayerFrame
 		sta ZP.ScrollFlag
+		sta ZP.PlayerBullets
+
+		lda #0
+		sta ZP.PlayerState
 
 
 		lda #1
@@ -39,6 +43,7 @@
 		lda #LUMINANCE_5 + GREEN + 8
 		sta ZP.PlayerColour
 
+
 		rts
 
 	}
@@ -46,11 +51,11 @@
 
 	FrameUpdate: {
 
-			lda ZP.PlayerDirty
-			beq CheckOddEven
+			//lda ZP.PlayerDirty
+			//beq CheckOddEven
 
 
-			ldx #PLAYER_SPRITE_ID
+			//ldx #PLAYER_SPRITE_ID
 
 			//jsr SPRITE.Draw
 
@@ -78,6 +83,7 @@
 		
 			ldx #PLAYER_SPRITE_ID
 
+
 			lda ZP.ScrollFlag
 			bne NoDraw
 
@@ -92,70 +98,95 @@
 
 
 
+	Lookup:	.byte 7, 5, 3, 1
+
 	GoRight: {
+
+		
+		lda ZP.PlayerState
+		cmp #STATE_WALK_RIGHT
+		beq AlreadyWalking
+
+		lda #0
+		sta ZP.PlayerFrame
+
+		lda ZP.FineScroll
+		cmp #7
+		beq AlreadyWalking
+
+		jsr GAME.ResetFineScroll
+
+
+	AlreadyWalking:
 
 		lda #STATE_WALK_RIGHT
 		sta ZP.PlayerState
 
-
 		lda ZP.PlayerFrame
 		clc
 		adc #1
 		and #%00000011
 		sta ZP.PlayerFrame
-
-		and #%00000001
 		bne NotMoved
 
-		ldx #0
-		stx ZP.PlayerBullets
-		
-
 		inc ZP.PlayerMoved
-	
-		lda ZP.PlayerX
-		cmp #SCROLL_THRESHOLD
-		bcc NoScroll
 
-		lda #1
-		sta ZP.ScrollFlag
-
-		jmp Restore
-
-	NoScroll:
+		jsr SCREEN.Scroll
+		bmi Done
 
 		inc ZP.PlayerX
 
-	Restore:
-
+		ldx #0
+		stx ZP.PlayerBullets
 		jsr SPRITE.RestoreChars
+
+	Done:
+
+		jmp SetWalkTime
 
 	NotMoved:
 
+		jsr SCREEN.Scroll
+
+
+
+	}
+
+
+
+
+
+
+	SetWalkTime: {
+
 		inc ZP.PlayerDirty
-		
-		lda #1
+
+		lda ZP.PlayerTime
+		eor #%00000001
+		sta ZP.PlayerTime
 		sta ZP.PlayerTimer
 
 
 		rts
+
 	}
+
 
 
 	GoLeft: {
 
+		jsr SCREEN.CheckScrollAdjust
+
 		lda #STATE_WALK_LEFT
 		sta ZP.PlayerState
-
 
 		lda ZP.PlayerFrame
 		clc
 		adc #1
 		and #%00000011
 		sta ZP.PlayerFrame
-
-		and #%00000001
 		bne NotMoved
+
 
 		dec ZP.PlayerX
 
@@ -164,17 +195,11 @@
 		jsr SPRITE.RestoreChars
 
 		inc ZP.PlayerMoved
-		
 
 	NotMoved:
 
-		inc ZP.PlayerDirty
-		
-		lda #1
-		sta ZP.PlayerTimer
+		jmp SetWalkTime
 
-
-		rts
 	}
 
 	
@@ -217,14 +242,6 @@
 
 
 
-	Move: {
-
-
-
-
-
-
-		rts
-	}
+	
 
 }

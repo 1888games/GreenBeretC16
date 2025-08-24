@@ -30,6 +30,8 @@
 
 		//inc TED.BORDER_COLOR
 
+
+
 		stx ZP.SpriteID
 
 		lda ZP.SpriteColour, x
