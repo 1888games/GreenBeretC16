@@ -23,7 +23,7 @@ Roberto Muscedere, June Tate-Gans, Pablo Roldan.
 This is free software with ABSOLUTELY NO WARRANTY.
 See the "About VICE" command for more info.
  
-Main: random seed was: 0x68aaf20d
+Main: random seed was: 0x68ab0d15
 Main: command line was: C:\C64\Tools\Vice\xplus4.exe -8 Assets/disk.d64 -moncommands bin/main.vs bin/gb.prg
 Main: VICE system file directory: 'C:\C64\Tools\Vice\..'.
 Main: VICE system file search path: 'C:\C64\Tools\Vice;C:\C64\Tools\Vice\..'.
@@ -378,43 +378,3 @@ AUTOSTART: Restoring FSDevice8ConvertP00 to 1.
 AUTOSTART: Restoring FSDeviceLongNames to 0.
 AUTOSTART: Done.
 VSync: Sync reset
-Render thread: Initiating render thread 0 shutdown
-Render thread: Joining render thread 0 ...
-Render thread: Joined render thread 0.
-
-
-LogFileName="E:\Dropbox\C64\Projects\Green Beret C16/bin/main_ViceLog.txt"
-SaveResourcesOnExit=1
-ConfirmOnExit=0
-MonitorXPos=1414
-MonitorYPos=669
-MonitorWidth=1214
-MonitorHeight=617
-MonitorFont="C64 Pro Mono 9"
-Window0Height=1360
-Window0Width=1046
-Window0Xpos=874
-Window0Ypos=31
-FunctionLowName=""
-FunctionHighName=""
-RamSize=16
-TEDBorderMode=2
-Acia1Enable=0
-KeySet1North=65362
-KeySet1East=65363
-KeySet1South=65364
-KeySet1West=65361
-KeySet1Fire=122
-JoyDevice1=2
-AutostartPrgMode=1
-Drive8TrueEmulation=0
-DriveSoundEmulationVolume=1612
-FFMPEGVideoBitrate=200000
-
--default -logfile "E:\Dropbox\C64\Projects\Green Beret C16/bin/main_ViceLog.txt" +confirmonexit -saveres -monitorfont "C64 Pro Mono 9" -monitorxpos "1414" -monitorypos "669" -monitorwidth "1214" -monitorheight "617" -windowxpos "874" -windowypos "31" -windowwidth "1046" -windowheight "1360" -functionlo "" -functionhi "" -ramsize "16" -TEDborders "2" +acia -joydev1 "2" -autostartprgmode "1" +drive8truedrive -drivesoundvolume "1612" -ffmpegvideobitrate "200000"
-Mainlock: VICE thread initiating shutdown
-Mainlock: VICE thread is exiting
-Main: VICE thread has been joined.
-Writing configuration file `C:\Users\NickSherman\AppData\Roaming\vice\vice.ini'.
-Sound: Closing device `dx'
-Hotkeys: shutting down.
