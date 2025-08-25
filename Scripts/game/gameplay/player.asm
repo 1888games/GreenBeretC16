@@ -22,16 +22,11 @@
 		sta ZP.PlayerFrame
 		sta ZP.ScrollFlag
 		sta ZP.PlayerBullets
-
-		lda #0
 		sta ZP.PlayerState
-
 
 		lda #1
 		sta ZP.PlayerDirty
 		sta ZP.PlayerMoved
-
-		lda #1
 		sta ZP.PlayerTimer
 
 		ldx #0
@@ -83,10 +78,6 @@
 		
 			ldx #PLAYER_SPRITE_ID
 
-
-			lda ZP.ScrollFlag
-			bne NoDraw
-
 			jsr SPRITE.Draw
 
 		NoDraw:
@@ -96,9 +87,6 @@
 		rts
 	}
 
-
-
-	Lookup:	.byte 7, 5, 3, 1
 
 	GoRight: {
 
@@ -115,7 +103,6 @@
 		beq AlreadyWalking
 
 		jsr GAME.ResetFineScroll
-
 
 	AlreadyWalking:
 

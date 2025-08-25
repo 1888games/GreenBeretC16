@@ -109,8 +109,8 @@ ZP: {
 
 
 
-    SpriteStoredChars:		.fill MAX_SPRITES * 8, 0
-    SpriteStoredColours:	.fill MAX_SPRITES * 8, 0
+    SpriteStoredChars:		.fill MAX_SPRITES * 6, 0
+    SpriteStoredColours:	.fill MAX_SPRITES * 6, 0
 
 
 	* = * "End of ZP" virtual

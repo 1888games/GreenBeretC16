@@ -66,10 +66,8 @@
 		adc #2
 		sta ZP.FineScroll
 
-		lda $FF07
-		and #%11111000
-		ora ZP.FineScroll
-		sta $FF07
+		jsr SetFineScroll
+
 
 	Okay:
 
@@ -77,6 +75,16 @@
 		rts
 	}
 
+	SetFineScroll: {
+
+		lda $FF07
+		and #%11111000
+		ora ZP.FineScroll
+		sta $FF07
+
+		rts
+
+	}
 
 	Scroll: {
 
@@ -116,10 +124,7 @@
 
 		sta ZP.FineScroll
 
-		lda $FF07
-		and #%11111000
-		ora ZP.FineScroll
-		sta $FF07
+		jsr SetFineScroll
 		
 		lda ZP.FineScroll
 		cmp #7
@@ -131,18 +136,6 @@
 	Scroll:
 
 		jsr MAP.FillScreen
-
-		inc ZP.PlayerDirty
-
-		//.for(var i=0; i<1; i++) {
-
-			//
-			//inc TED.BORDER_COLOR
-
-			//ldx #0
-			//jsr SPRITE.Draw
-
-		//}
 
 		lda #$FF
 		rts

@@ -28,17 +28,14 @@
 
 	Draw: {
 
-		//inc TED.BORDER_COLOR
-
-
+		
+		lda ZP.SpriteDirty, x
+		beq DontDraw
 
 		stx ZP.SpriteID
 
 		lda ZP.SpriteColour, x
 		sta ZP.Colour
-
-		lda ZP.SpriteDirty, x
-		beq DontDraw
 
 		jsr CalculatePositionAddresses
 
@@ -62,8 +59,6 @@
 
 	BackupChars: {
 
-
-
 		lda ZP.SpriteMoved, x
 		bne DoBackup
 
@@ -73,45 +68,45 @@
 
 		ldy #0
 		lda (ZP.ScreenAddress), y
-		sta ZP.SpriteStoredChars
+		sta ZP.SpriteStoredChars + 0, x
 
 		lda (ZP.ColourAddress), y
-		sta ZP.SpriteStoredColours
+		sta ZP.SpriteStoredColours + 0, x
 
 		iny 
 		lda (ZP.ScreenAddress), y
-		sta ZP.SpriteStoredChars + 1
+		sta ZP.SpriteStoredChars + (MAX_SPRITES * 1), x 
 
 		lda (ZP.ColourAddress), y
-		sta ZP.SpriteStoredColours + 1
+		sta ZP.SpriteStoredColours + (MAX_SPRITES * 1), x
 
 		ldy #40
 		lda (ZP.ScreenAddress), y
-		sta ZP.SpriteStoredChars + 2
+		sta ZP.SpriteStoredChars + (MAX_SPRITES * 2), x 
 
 		lda (ZP.ColourAddress), y
-		sta ZP.SpriteStoredColours + 2
+		sta ZP.SpriteStoredColours + (MAX_SPRITES * 2), x 
 
 		iny 
 		lda (ZP.ScreenAddress), y
-		sta ZP.SpriteStoredChars + 3
+		sta ZP.SpriteStoredChars + (MAX_SPRITES * 3), x 
 
 		lda (ZP.ColourAddress), y
-		sta ZP.SpriteStoredColours + 3
+		sta ZP.SpriteStoredColours + (MAX_SPRITES * 3), x 
 
 		ldy #80
 		lda (ZP.ScreenAddress), y
-		sta ZP.SpriteStoredChars + 4
+		sta ZP.SpriteStoredChars + (MAX_SPRITES * 4), x 
 
 		lda (ZP.ColourAddress), y
-		sta ZP.SpriteStoredColours + 4
+		sta ZP.SpriteStoredColours +(MAX_SPRITES * 4), x 
 
 		iny 
 		lda (ZP.ScreenAddress), y
-		sta ZP.SpriteStoredChars + 5
+		sta ZP.SpriteStoredChars + (MAX_SPRITES * 5), x 
 
 		lda (ZP.ColourAddress), y
-		sta ZP.SpriteStoredColours + 5
+		sta ZP.SpriteStoredColours + (MAX_SPRITES * 5), x 
 
 		lda #0
 		sta ZP.SpriteMoved, x
@@ -125,39 +120,39 @@
 
 
 		ldy #0
-		lda ZP.SpriteStoredChars
+		lda ZP.SpriteStoredChars + (MAX_SPRITES * 0), x
 		sta (ZP.ScreenAddress), y
-		lda ZP.SpriteStoredColours
+		lda ZP.SpriteStoredColours + (MAX_SPRITES * 0), x
 		sta (ZP.ColourAddress), y
 
 		iny 
-		lda ZP.SpriteStoredChars + 1
+		lda ZP.SpriteStoredChars + (MAX_SPRITES * 1), x
 		sta (ZP.ScreenAddress), y
-		lda ZP.SpriteStoredColours + 1
+		lda ZP.SpriteStoredColours + (MAX_SPRITES * 1), x
 		sta (ZP.ColourAddress), y
 
 		ldy #40
-		lda ZP.SpriteStoredChars + 2
+		lda ZP.SpriteStoredChars + (MAX_SPRITES * 2), x
 		sta (ZP.ScreenAddress), y
-		lda ZP.SpriteStoredColours + 2
+		lda ZP.SpriteStoredColours + (MAX_SPRITES * 2), x
 		sta (ZP.ColourAddress), y
 
 		iny 
-		lda ZP.SpriteStoredChars + 3
+		lda ZP.SpriteStoredChars + (MAX_SPRITES * 3), x
 		sta (ZP.ScreenAddress), y
-		lda ZP.SpriteStoredColours + 3
+		lda ZP.SpriteStoredColours + (MAX_SPRITES * 3), x
 		sta (ZP.ColourAddress), y
 
 		ldy #80
-		lda ZP.SpriteStoredChars + 4
+		lda ZP.SpriteStoredChars + (MAX_SPRITES * 4), x
 		sta (ZP.ScreenAddress), y
-		lda ZP.SpriteStoredColours + 4
+		lda ZP.SpriteStoredColours + (MAX_SPRITES * 4), x
 		sta (ZP.ColourAddress), y
 
 		iny 
-		lda ZP.SpriteStoredChars + 5
+		lda ZP.SpriteStoredChars + (MAX_SPRITES * 5), x
 		sta (ZP.ScreenAddress), y
-		lda ZP.SpriteStoredColours + 5
+		lda ZP.SpriteStoredColours + (MAX_SPRITES * 5), x
 		sta (ZP.ColourAddress), y
 
 
@@ -168,7 +163,6 @@
 	PlaceChars: {
 
 		ldy #0
-		ldx #0
 
 		lda ZP.Colour
 		sta (ZP.ColourAddress), y
@@ -182,28 +176,20 @@
 
 		sta (ZP.ScreenAddress), y
 
-		clc
 		adc #1
-
 		ldy #40
 
 		sta (ZP.ScreenAddress), y
 
 		iny
-
-		clc
 		adc #1
 		sta (ZP.ScreenAddress), y
 
 		ldy #80
-
-		clc
 		adc #1
 		sta (ZP.ScreenAddress), y
 
 		iny
-
-		clc
 		adc #1
 		sta (ZP.ScreenAddress), y
 
@@ -225,10 +211,10 @@
 		sta (ZP.ColourAddress), y
 
 
-
-
-
 		rts
+
+
+		
 	}
 
 
@@ -299,7 +285,7 @@
 			adc ZP.Frame
 			sta ZP.Frame
 
-			tax
+			//tax
 
 		.if (method == "Blue") {
 
@@ -308,11 +294,10 @@
 
 			ldy #0
 
-
-
-			lda ZP.SpriteStoredChars
+			lda ZP.SpriteStoredChars + (MAX_SPRITES * 0), x
 			jsr GetBgCharAddress
 
+			ldx ZP.Frame
 			lda TopLeftCharsLSB, x
 			sta CopyCharBytes.Branch.Source + 1
 
@@ -323,14 +308,13 @@
 
 		TopRight:
 
-			ldx ZP.Frame
-			//ldy #1
+			ldx ZP.SpriteID
 
-			lda ZP.SpriteStoredChars + 1
+			lda ZP.SpriteStoredChars + (MAX_SPRITES * 1), x
 			jsr GetBgCharAddress
 
-			//ldy ZP.Y
-
+	
+			ldx ZP.Frame
 			lda TopRightCharsLSB, x
 			sta CopyCharBytes.Branch.Source + 1
 
@@ -341,14 +325,14 @@
 
 		MiddleLeft:
 
-			ldx ZP.Frame
-			//ldy #40
+			ldx ZP.SpriteID
+	
 
-			lda ZP.SpriteStoredChars + 2
+			lda ZP.SpriteStoredChars + (MAX_SPRITES * 2), x
 			jsr GetBgCharAddress
 
-			//ldy ZP.Y
 
+			ldx ZP.Frame
 			lda MiddleLeftCharsLSB, x
 			sta CopyCharBytes.Branch.Source + 1
 
@@ -360,15 +344,15 @@
 		MiddleRight:
 
 
-			ldx ZP.Frame
+			ldx ZP.SpriteID
 			//ldy #41
 
-			lda ZP.SpriteStoredChars + 3
+			lda ZP.SpriteStoredChars + (MAX_SPRITES * 3), x
 			jsr GetBgCharAddress
 //
 			//ldy ZP.Y
 
-
+			ldx ZP.Frame
 			lda MiddleRightCharsLSB, x
 			sta CopyCharBytes.Branch.Source + 1
 
@@ -380,15 +364,15 @@
 		BottomLeft:
 
 
-			ldx ZP.Frame
+			ldx ZP.SpriteID
 			//ldy #80
 
-			lda ZP.SpriteStoredChars + 4
+			lda ZP.SpriteStoredChars + (MAX_SPRITES * 4), x
 			jsr GetBgCharAddress
 
 			//ldy ZP.Y
 
-
+			ldx ZP.Frame
 			lda BottomLeftCharsLSB, x
 			sta CopyCharBytes.Branch.Source + 1
 
@@ -399,14 +383,14 @@
 
 		BottomRight:
 
-			ldx ZP.Frame
+			ldx ZP.SpriteID
 			//ldy #81
 
-			lda ZP.SpriteStoredChars + 5
+			lda ZP.SpriteStoredChars + (MAX_SPRITES * 5), x
 			jsr GetBgCharAddress
 
 			//ldy ZP.Y
-
+			ldx ZP.Frame
 			lda BottomRightCharsLSB, x
 			sta CopyCharBytes.Branch.Source + 1
 
@@ -555,8 +539,6 @@
 		// x = sprite ID
 
 	CalculatePositionAddresses: {
-
-		lda SpriteStart, x
 
 		lda ZP.SpriteY, x
 		tay
