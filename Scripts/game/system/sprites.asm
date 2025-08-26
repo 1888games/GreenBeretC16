@@ -17,6 +17,8 @@
 
 	* = * "Sprite"
 
+	#import "scripts/game/system/sprite_3_1.asm"
+
 	RowStart_LSB: .fill 25, <i * 40
 	RowStart_MSB: .fill 25, >i * 40
 
@@ -55,6 +57,8 @@
 	}
 
 
+
+
 	
 
 	BackupChars: {
@@ -65,6 +69,8 @@
 		rts
 
 	DoBackup:
+
+
 
 		ldy #0
 		lda (ZP.ScreenAddress), y
@@ -79,6 +85,15 @@
 
 		lda (ZP.ColourAddress), y
 		sta ZP.SpriteStoredColours + (MAX_SPRITES * 1), x
+
+		lda ZP.SpriteState, x
+		and #%11101111
+		cmp #STATE_CROUCH_RIGHT
+		bcc TwoByThree
+
+		jmp Backup3x1
+
+	TwoByThree:
 
 		ldy #40
 		lda (ZP.ScreenAddress), y
@@ -131,6 +146,16 @@
 		lda ZP.SpriteStoredColours + (MAX_SPRITES * 1), x
 		sta (ZP.ColourAddress), y
 
+		lda ZP.SpriteState, x
+		and #%11101111
+		cmp #STATE_CROUCH_RIGHT
+		bcc TwoByThree
+
+		jmp Restore3x1
+
+	TwoByThree:
+
+
 		ldy #40
 		lda ZP.SpriteStoredChars + (MAX_SPRITES * 2), x
 		sta (ZP.ScreenAddress), y
@@ -161,6 +186,16 @@
 
 
 	PlaceChars: {
+
+		lda ZP.SpriteState, x
+		and #%11101111
+		cmp #STATE_CROUCH_RIGHT
+		bcc TwoByThree
+
+		jmp Place3x1
+
+
+	TwoByThree:
 
 		ldy #0
 
@@ -253,39 +288,44 @@
 	}
 
 
-	DirOffset:	.byte 0, 19
+	//DirOffset:	.byte 0, 16 - 1
 
 	CopySpriteData: {
 
+			//lda ZP.SpriteState, x
+			//cmp #STATE_CROUCH_RIGHT
+			//bcc NoCrouch
+
+			//.break
+			//nop
 		
+		//NoCrouch:
+			
+
 			lda SpriteCharAddress_LSB, x
 			sta CopyCharBytes.Branch.Dest + 1
 
 			lda SpriteCharAddress_MSB, x
 			sta CopyCharBytes.Branch.Dest + 2
 
-			lda ZP.SpriteState, x
-			and #%00000001
-			tay
-			lda DirOffset, y
+			lda #0
 			sta ZP.Frame
-
+		
 			lda ZP.SpriteBullets, x
 			beq NoGun
 
-			lda ZP.Frame
-			clc
-			adc #4
+			lda #4
 			sta ZP.Frame
 
 		NoGun:
 
-			lda ZP.SpriteFrame, x
+			
+			lda ZP.SpriteState, x
+			clc
+			adc ZP.SpriteFrame, x
 			clc
 			adc ZP.Frame
 			sta ZP.Frame
-
-			//tax
 
 		.if (method == "Blue") {
 
@@ -326,6 +366,7 @@
 		MiddleLeft:
 
 			ldx ZP.SpriteID
+
 	
 
 			lda ZP.SpriteStoredChars + (MAX_SPRITES * 2), x
@@ -345,6 +386,16 @@
 
 
 			ldx ZP.SpriteID
+
+			lda ZP.SpriteState, x
+			and #%11101111
+			cmp #STATE_CROUCH_RIGHT
+			bcc TwoByThree
+
+			rts
+
+		TwoByThree:
+
 			//ldy #41
 
 			lda ZP.SpriteStoredChars + (MAX_SPRITES * 3), x

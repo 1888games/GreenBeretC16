@@ -90,10 +90,29 @@
 
 	GoRight: {
 
+
 		
 		lda ZP.PlayerState
 		cmp #STATE_WALK_RIGHT
 		beq AlreadyWalking
+
+		cmp #STATE_CROUCH_RIGHT
+		bne NotCrouching
+
+		rts
+
+	NotCrouching:
+
+		cmp #STATE_CROUCH_LEFT
+		bne NotCrouchingLeft
+
+		lda #STATE_CROUCH_RIGHT
+		sta ZP.PlayerState
+		inc ZP.PlayerDirty
+
+		rts
+
+	NotCrouchingLeft:
 
 		lda #0
 		sta ZP.PlayerFrame
@@ -162,6 +181,28 @@
 
 	GoLeft: {
 
+		
+
+
+		lda ZP.PlayerState
+		cmp #STATE_CROUCH_LEFT
+		bne NotCrouching
+
+		rts
+
+	NotCrouching:
+
+		cmp #STATE_CROUCH_RIGHT
+		bne NotCrouchRight
+
+		lda #STATE_CROUCH_LEFT
+		sta ZP.PlayerState
+		inc ZP.PlayerDirty
+
+		rts
+
+	NotCrouchRight:
+
 		jsr SCREEN.CheckScrollAdjust
 
 		lda #STATE_WALK_LEFT
@@ -189,6 +230,79 @@
 
 	}
 
+
+	GoDown: {
+
+		lda ZP.PlayerState
+		and #%11101111
+		cmp #STATE_CROUCH_RIGHT
+		beq AlreadyCrouching
+
+		
+		lda ZP.PlayerFrame
+		sta ZP.PlayerOffset
+
+		lda #0
+		sta ZP.PlayerFrame
+
+		inc ZP.PlayerY
+		inc ZP.PlayerY
+		dec ZP.PlayerX
+
+		ldx #0
+		stx ZP.PlayerBullets
+		jsr SPRITE.RestoreChars
+
+		lda ZP.PlayerState
+		clc
+		adc #STATE_CROUCH_RIGHT
+		sta ZP.PlayerState
+
+
+		inc ZP.PlayerMoved
+		inc ZP.PlayerDirty
+
+	AlreadyCrouching:
+
+
+
+		rts
+	}
+
+	CheckReleaseDown: {
+
+
+		lda ZP.PlayerState
+		and #%11101111
+		cmp #STATE_CROUCH_RIGHT
+		bne NotCrouching
+
+		
+		lda ZP.PlayerOffset
+		sta ZP.PlayerFrame
+
+		dec ZP.PlayerY
+		dec ZP.PlayerY
+		inc ZP.PlayerX
+
+		ldx #0
+		stx ZP.PlayerBullets
+		jsr SPRITE.RestoreChars
+
+		lda ZP.PlayerState
+		sec
+		sbc #STATE_CROUCH_RIGHT
+		sta ZP.PlayerState
+
+
+		inc ZP.PlayerMoved
+		inc ZP.PlayerDirty
+
+	NotCrouching:
+
+
+		rts
+	}
 	
 
 	Control: {
@@ -217,11 +331,25 @@
 
 		lda #1
 		sta ZP.PlayerBullets
-		rts
 
+		inc ZP.PlayerDirty
+		
 	NotFire:
 
-		
+		lda ZP.JOY_READING
+		and #INPUT.joyDownMask
+		bne NotDown
+
+
+		jmp GoDown
+
+	NotDown:
+			
+		jsr CheckReleaseDown
+
+	
+
+	NotCrouching:
 
 
 		rts
