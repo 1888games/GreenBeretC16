@@ -17,7 +17,8 @@
 
 	* = * "Sprite"
 
-	#import "scripts/game/system/sprite_3_1.asm"
+	#import "scripts/game/system/sprite_3x1.asm"
+	#import "scripts/game/system/sprite_1x1.asm"
 
 	RowStart_LSB: .fill 25, <i * 40
 	RowStart_MSB: .fill 25, >i * 40
@@ -34,6 +35,24 @@
 		lda ZP.SpriteDirty, x
 		beq DontDraw
 
+		jsr CommonDraw
+
+		jsr BackupChars
+		jsr CopySpriteData
+
+		ldx ZP.SpriteID
+
+		jsr PlaceChars
+
+	DontDraw: 
+
+
+		rts
+	}
+
+
+	CommonDraw: {
+
 		stx ZP.SpriteID
 
 		lda ZP.SpriteColour, x
@@ -43,20 +62,10 @@
 
 		dec ZP.SpriteDirty, x
 
-		jsr BackupChars
-		jsr CopySpriteData
-
-		ldx ZP.SpriteID
-
-		jsr PlaceChars
-
-		DontDraw: 
-
-
 		rts
+
+
 	}
-
-
 
 
 	
@@ -69,8 +78,6 @@
 		rts
 
 	DoBackup:
-
-
 
 		ldy #0
 		lda (ZP.ScreenAddress), y

@@ -19,6 +19,7 @@
 		jsr MAP.FillScreen
 
 		jsr PLAYER.Initialise
+		jsr BULLET.Initialise
 		
 		jmp Loop
 	}

@@ -2,6 +2,7 @@
 
 .label MAX_ENEMIES = 9
 .label MAX_SPRITES = MAX_ENEMIES + 1
+.label MAX_BULLETS = 6
 
 ZP: {
 
@@ -23,6 +24,9 @@ ZP: {
 	Temp1:					.byte 0
 	Temp2:					.byte 0
 	ScrollFlag:				.byte 0
+
+* = * "Fire Frames" virtual
+	FireFrames:				.byte 0
 
 * = * "Joystick" virtual
 
@@ -65,14 +69,17 @@ ZP: {
     SpriteX:				
     PlayerX:				.byte 0
     EnemyX:					.fill MAX_ENEMIES, 0
+    BulletX:				.fill MAX_BULLETS, 0
 
     SpriteY:
     PlayerY:				.byte 0
     EnemyY:					.fill MAX_ENEMIES, 0
+    BulletY:				.fill MAX_BULLETS, 0
 
     SpriteState:			
     PlayerState:			.byte 0
     EnemyState:				.fill MAX_ENEMIES, 0
+    BulletState:			.fill MAX_BULLETS, 0
 
     SpriteOffset:			
     PlayerOffset:			.byte 0
@@ -81,6 +88,7 @@ ZP: {
     SpriteTimer:			
     PlayerTimer:			.byte 0
     EnemyTimer:				.fill MAX_ENEMIES, 0
+    BulletTimer:			.fill MAX_BULLETS, 0
 
     SpriteTime:				
     PlayerTime:				.byte 0
@@ -107,10 +115,11 @@ ZP: {
     EnemyMoved:				.fill MAX_ENEMIES, 0
 
 
-
-
     SpriteStoredChars:		.fill MAX_SPRITES * 6, 0
     SpriteStoredColours:	.fill MAX_SPRITES * 6, 0
+
+    BulletStoredChars:		.fill MAX_BULLETS, 0
+    BulletStoredColours: 	.fill MAX_BULLETS, 0
 
 
 	* = * "End of ZP" virtual

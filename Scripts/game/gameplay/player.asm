@@ -23,11 +23,13 @@
 		sta ZP.ScrollFlag
 		sta ZP.PlayerBullets
 		sta ZP.PlayerState
+		sta ZP.FireFrames
 
 		lda #1
 		sta ZP.PlayerDirty
 		sta ZP.PlayerMoved
 		sta ZP.PlayerTimer
+		sta ZP.PlayerBullets
 
 		ldx #0
 
@@ -46,13 +48,22 @@
 
 	FrameUpdate: {
 
-			//lda ZP.PlayerDirty
-			//beq CheckOddEven
 
+			lda ZP.JOY_READING
+			and #INPUT.joyFireMask
+			bne NotFire
 
-			//ldx #PLAYER_SPRITE_ID
+			inc ZP.FireFrames
+			jmp CheckOddEven
+			
+		NotFire:
 
-			//jsr SPRITE.Draw
+			lda ZP.FireFrames
+			beq CheckOddEven
+
+			clc
+			ora #%10000000
+			sta ZP.FireFrames
 
 		CheckOddEven:
 
@@ -143,7 +154,7 @@
 		inc ZP.PlayerX
 
 		ldx #0
-		stx ZP.PlayerBullets
+		//stx ZP.PlayerBullets
 		jsr SPRITE.RestoreChars
 
 	Done:
@@ -219,7 +230,7 @@
 		dec ZP.PlayerX
 
 		ldx #0
-		stx ZP.PlayerBullets
+	//	stx ZP.PlayerBullets
 		jsr SPRITE.RestoreChars
 
 		inc ZP.PlayerMoved
@@ -250,7 +261,7 @@
 		dec ZP.PlayerX
 
 		ldx #0
-		stx ZP.PlayerBullets
+		//stx ZP.PlayerBullets
 		jsr SPRITE.RestoreChars
 
 		lda ZP.PlayerState
@@ -286,7 +297,7 @@
 		inc ZP.PlayerX
 
 		ldx #0
-		stx ZP.PlayerBullets
+		//stx ZP.PlayerBullets
 		jsr SPRITE.RestoreChars
 
 		lda ZP.PlayerState
@@ -325,12 +336,24 @@
 
 	NotLeft:
 
-		lda ZP.JOY_READING
-		and #INPUT.joyFireMask
-		bne NotFire
+		lda ZP.FireFrames
+		bpl NotFire
+
+		cmp #$84
+		bcc Stab
+
+
+	Fire:
+
+
+
+	Stab:
 
 		lda #1
 		sta ZP.PlayerBullets
+
+		lda #0
+		sta ZP.FireFrames
 
 		inc ZP.PlayerDirty
 		
