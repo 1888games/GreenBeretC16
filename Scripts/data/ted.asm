@@ -35,6 +35,7 @@ TED: {
 
 	.label SND_1_CHAR_ROM_RAM = $FF12
 	.label CHARSET_ADDRESS = $FF13
+	.label VIDEO_ADDRESS = $FF14
 
 
 }

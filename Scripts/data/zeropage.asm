@@ -7,7 +7,6 @@
 ZP: {
 
 	ScreenAddress:			.word 0
-	Counter:				.byte 0
 	FrameSwitch:			.byte 0
 	ColourAddress:			.word 0
 	SourceAddress:			.byte 0

@@ -253,15 +253,13 @@
 		lda ZP.PlayerFrame
 		sta ZP.PlayerOffset
 
-		lda #0
-		sta ZP.PlayerFrame
-
 		inc ZP.PlayerY
 		inc ZP.PlayerY
 		dec ZP.PlayerX
 
 		ldx #0
-		//stx ZP.PlayerBullets
+		stx ZP.PlayerFrame
+
 		jsr SPRITE.RestoreChars
 
 		lda ZP.PlayerState
@@ -288,7 +286,6 @@
 		cmp #STATE_CROUCH_RIGHT
 		bne NotCrouching
 
-		
 		lda ZP.PlayerOffset
 		sta ZP.PlayerFrame
 
@@ -304,7 +301,6 @@
 		sec
 		sbc #STATE_CROUCH_RIGHT
 		sta ZP.PlayerState
-
 
 		inc ZP.PlayerMoved
 		inc ZP.PlayerDirty

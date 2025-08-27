@@ -30,10 +30,13 @@ MAIN: {
 
 	Entry: {
 
-		jsr IRQ.SetupInterrupts
- 
+		sei
 
+		sta BANK_IN_RAM
+		jsr IRQ.SetMainIRQ
 
+		cli
+		
 		jmp GAME.Show
 
 	}
@@ -45,8 +48,7 @@ MAIN: {
 		lda ZP.PerformFrameCodeFlag
 		beq WaitForIRQ
 
-		lda #0
-		sta ZP.PerformFrameCodeFlag
+		dec ZP.PerformFrameCodeFlag
 
 		rts
 	}

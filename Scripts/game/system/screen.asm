@@ -3,37 +3,6 @@
 	* = * "Screen"
 
 
-	SetColoursAndMode: {
-
-		lda #%10010000
-        sta TED.SCREEN_CONTROL_2
-
-		lda #%11000000   
-		sta TED.SND_1_CHAR_ROM_RAM     // Bit 2 = 0 (RAM)
-
-		lda #LUMINANCE_1 + WHITE
-		sta TED.BORDER_COLOR
-
-		lda #LUMINANCE_5 + 13
-		sta TED.BACKGROUND_COLOR
-
-		lda #%00111000      // $38
-		sta TED.CHARSET_ADDRESS 
-
-		lda #LUMINANCE_1 + BLACK 
-		sta TED.EXTENDED_BG_COLOR_1
-
-		lda #LUMINANCE_7 + RED
-		sta TED.EXTENDED_BG_COLOR_2
-
-		lda #%00110000
-		sta $FF14
-	 
-		rts
-
-	}
-
-
 
 
 	DrawFloor: {
@@ -52,6 +21,8 @@
 		cpx #40
 		bcc FloorLoop
 
+	Exit:
+
 		rts
 	}
 
@@ -60,19 +31,14 @@
 
 		lda ZP.FineScroll
 		cmp #7
-		beq Okay
+		beq DrawFloor.Exit
 
 		clc
 		adc #2
 		sta ZP.FineScroll
 
-		jsr SetFineScroll
+		jmp SetFineScroll
 
-
-	Okay:
-
-		
-		rts
 	}
 
 	SetFineScroll: {
@@ -103,10 +69,8 @@
 		sbc #2
 		bpl NoWrap
 
+		inc ZP.SectorXOffset
 		lda ZP.SectorXOffset
-		clc
-		adc #1
-		sta ZP.SectorXOffset
 
 		cmp ZP.ScrollSectorLength
 		bcc NotNextSector
@@ -147,12 +111,13 @@
 	Clear: {
 
 		ldx #250
-		lda #0
+		lda #32
 
 		Loop:
 
+	
 			sta SCREEN_RAM - 1, x
-			sta SCREEN_RAM + 249, x
+			sta SCREEN_RAM + 239, x
 			sta SCREEN_RAM + 499, x
 			sta SCREEN_RAM + 749, x
 
