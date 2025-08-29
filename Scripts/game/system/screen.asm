@@ -59,6 +59,7 @@
 		bcs DoScroll
 
 		lda #0
+		sta ZP.JustScrolled
 		rts
 
 	DoScroll:
@@ -95,6 +96,7 @@
 		beq Scroll
 
 		lda #1
+		sta ZP.JustScrolled
 		rts
 
 	Scroll:
@@ -102,6 +104,7 @@
 		jsr MAP.FillScreen
 
 		lda #$FF
+		sta ZP.JustScrolled
 		rts
 
 	}

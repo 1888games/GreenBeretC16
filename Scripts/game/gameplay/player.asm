@@ -20,16 +20,18 @@
 		lda #0
 		sta ZP.PlayerOffset
 		sta ZP.PlayerFrame
-		sta ZP.ScrollFlag
-		sta ZP.PlayerBullets
+		sta ZP.JustScrolled
+		//sta ZP.PlayerBullets
 		sta ZP.PlayerState
 		sta ZP.FireFrames
+		//sta ZP.PlayerWeapon
 
 		lda #1
 		sta ZP.PlayerDirty
 		sta ZP.PlayerMoved
 		sta ZP.PlayerTimer
 		sta ZP.PlayerBullets
+		sta ZP.PlayerWeapon
 
 		ldx #0
 
@@ -317,10 +319,6 @@
 	// a = player bullets
 
 	FireWeapon: {
-
-		.break
-
-		and #%11100000
 		
 		jsr BULLET.Fire
 
@@ -357,13 +355,12 @@
 		lda ZP.PlayerY
 		sta ZP.SpriteY, x
 
-
 		lda ZP.PlayerState
 		and #%11101111
 		cmp #STATE_CROUCH_RIGHT
 		bne NotCrouching
 
-		inc ZP.SpriteY, x
+		inc ZP.SpriteY, x 
 
 	NotCrouching:
 
@@ -403,7 +400,7 @@
 
 	Fire:
 
-		lda ZP.PlayerBullets
+		lda ZP.PlayerWeapon
 		beq Stab
 
 		jsr FireWeapon

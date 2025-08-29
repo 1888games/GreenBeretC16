@@ -24,8 +24,14 @@
 	RowStart_MSB: .fill 25, >i * 40
 
 	SpriteStart:  			.fill MAX_SPRITES, PLAYER_CHAR_START + (i * 6)
+
+	* = * "Sprite Char Addresses"
+
 	SpriteCharAddress_LSB:	.fill MAX_SPRITES, <[CHARSET_ADDRESS + ([PLAYER_CHAR_START + (i * 6)] * 8)]
+							.fill MAX_BULLETS, <[CHARSET_ADDRESS + ([PLAYER_CHAR_START + (MAX_SPRITES * 6)] * 8)] + (i * 8)
+
 	SpriteCharAddress_MSB:	.fill MAX_SPRITES, >[CHARSET_ADDRESS + ([PLAYER_CHAR_START + (i * 6)] * 8)]
+							.fill MAX_BULLETS, >[CHARSET_ADDRESS + ([PLAYER_CHAR_START + (MAX_SPRITES * 6)] * 8)] + (i * 8)
 
 
 
@@ -298,16 +304,6 @@
 	//DirOffset:	.byte 0, 16 - 1
 
 	CopySpriteData: {
-
-			//lda ZP.SpriteState, x
-			//cmp #STATE_CROUCH_RIGHT
-			//bcc NoCrouch
-
-			//.break
-			//nop
-		
-		//NoCrouch:
-			
 
 			lda SpriteCharAddress_LSB, x
 			sta CopyCharBytes.Branch.Dest + 1

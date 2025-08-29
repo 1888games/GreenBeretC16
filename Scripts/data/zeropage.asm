@@ -22,7 +22,8 @@ ZP: {
 	Y:						.byte 0
 	Temp1:					.byte 0
 	Temp2:					.byte 0
-	ScrollFlag:				.byte 0
+	JustScrolled:			.byte 0
+
 
 * = * "Fire Frames" virtual
 	FireFrames:				.byte 0
@@ -100,6 +101,10 @@ ZP: {
     SpriteBullets:			
     PlayerBullets:			.byte 0
     EnemyBullets:			.fill MAX_ENEMIES, 0
+
+    SpriteWeapon:
+    PlayerWeapon:			.byte 0
+    EnemyWeapon:			.fill MAX_ENEMIES, 0
 
     SpriteFrame:	
     PlayerFrame:			.byte 0

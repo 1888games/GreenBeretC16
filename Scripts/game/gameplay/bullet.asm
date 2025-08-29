@@ -50,6 +50,9 @@
 			lda #1
 			sta ZP.SpriteTimer, x
 
+			lda #255
+			sta ZP.BulletStoredChars - MAX_SPRITES, x
+
 
 			// caller to set direction and position?
 
@@ -75,7 +78,18 @@
 		Ready:
 
 			jsr SPRITE.CalculatePositionAddresses
+
+			lda ZP.BulletStoredChars - MAX_SPRITES, x
+			cmp #255
+			beq IsFirstFrame
+
+		NotFirstFrame:
+
 			jsr Move
+
+		IsFirstFrame:
+
+			jsr Draw
 
 			ldx ZP.SpriteID
 
@@ -88,10 +102,38 @@
 		rts
 	}
 
+
+	Draw: {
+
+
+
+		BackupFirst:
+
+			ldy #0
+			lda (ZP.ScreenAddress), y
+			sta ZP.BulletStoredChars - MAX_SPRITES, x
+
+			lda (ZP.ColourAddress), y
+			sta ZP.BulletStoredColours - MAX_SPRITES, x
+			
+		NowDraw:	
+
+			
+
+
+
+
+		rts
+	}
+
+
 	Move: {
 
+
+		rts
+
 		lda ZP.SpriteState, x
-		and #%00000100
+		and #%00010000
 		beq GoRight
 
 
