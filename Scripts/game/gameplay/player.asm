@@ -48,31 +48,32 @@
 
 	FrameUpdate: {
 
-
 			lda ZP.JOY_READING
 			and #INPUT.joyFireMask
 			bne NotFire
 
 			inc ZP.FireFrames
-			jmp CheckOddEven
+		Exit:
+			rts
 			
 		NotFire:
 
 			lda ZP.FireFrames
-			beq CheckOddEven
+			beq Exit
 
 			clc
 			ora #%10000000
 			sta ZP.FireFrames
 
-		CheckOddEven:
+		rts
+	}
 
-			lda ZP.FrameSwitch
-			bne Ready
 
-			rts
+	
+	EvenFrameUpdate: {
 
-		Ready:	
+
+		CheckTimer:
 
 			lda ZP.PlayerTimer
 			beq CanMove
@@ -312,6 +313,67 @@
 	}
 	
 
+
+	// a = player bullets
+
+	FireWeapon: {
+
+		.break
+
+		and #%11100000
+		
+		jsr BULLET.Fire
+
+		lda ZP.PlayerState
+		and #%00010000
+		pha
+		sta ZP.Temp1
+
+		lda ZP.SpriteState, x
+		ora ZP.Temp1
+		sta ZP.SpriteState, x
+
+		pla
+		beq FireRight
+
+
+	FireLeft:
+
+		lda ZP.PlayerX
+		sta ZP.SpriteX, x
+		dec ZP.SpriteX, x
+		jmp Exit
+
+	FireRight:
+
+		lda ZP.PlayerX
+		clc
+		adc #2
+		sta ZP.SpriteX, x
+
+	Exit:
+
+
+		lda ZP.PlayerY
+		sta ZP.SpriteY, x
+
+
+		lda ZP.PlayerState
+		and #%11101111
+		cmp #STATE_CROUCH_RIGHT
+		bne NotCrouching
+
+		inc ZP.SpriteY, x
+
+	NotCrouching:
+
+
+		lda #0
+		sta ZP.FireFrames
+
+		rts
+	}
+
 	Control: {
 
 		lda ZP.JOY_READING
@@ -335,18 +397,19 @@
 		lda ZP.FireFrames
 		bpl NotFire
 
-		cmp #$84
+		cmp #$85
 		bcc Stab
 
 
 	Fire:
 
+		lda ZP.PlayerBullets
+		beq Stab
 
+		jsr FireWeapon
+		jmp NotFire
 
 	Stab:
-
-		lda #1
-		sta ZP.PlayerBullets
 
 		lda #0
 		sta ZP.FireFrames

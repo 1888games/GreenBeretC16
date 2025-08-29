@@ -32,11 +32,11 @@ MAIN: {
 
 		sei
 
-		sta BANK_IN_RAM
+		sta BANK_IN_RAM 
 		jsr IRQ.SetMainIRQ
 
 		cli
-		
+
 		jmp GAME.Show
 
 	}
@@ -69,7 +69,6 @@ MAIN: {
 #import "scripts/common/input.asm"
 
 
-
 .print "bytes free: " + (($3000 - *))
 
 * = $0A00 "Sprites"
@@ -89,8 +88,7 @@ Sprites:
 * = SCREEN_RAM "Screen RAM" virtual
 .fill 1024, 96
  
-* = CHARSET_ADDRESS "Charset Game"
-
+* = CHARSET_ADDRESS "Charset Game" 
 Charset:
 
 .import binary "assets/Level 1/level 1 - Chars.bin" 

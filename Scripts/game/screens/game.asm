@@ -38,6 +38,9 @@
 		jsr BULLET.Initialise
 
 		jsr DrawHud
+
+		lda #1
+		sta ZP.FrameSwitch
 		
 		jmp Loop
 	}
@@ -51,7 +54,7 @@
 
 
 		ldx #0
-
+		
 		Loop:
 
 			lda Hud1, x
@@ -119,15 +122,20 @@
 	
 		jsr MAIN.WaitForIRQ
 
-		//inc TED.BORDER_COLOR
+		jsr PLAYER.FrameUpdate
 
-		//jsr SCREEN.Scroll
+		lda ZP.FrameSwitch
+		bne OddFrame
 
-		jsr PLAYER.FrameUpdate 
-		//jsr SCREEN.Scroll
+	EvenFrame:
 
-		//dec TED.BORDER_COLOR
+		jsr PLAYER.EvenFrameUpdate 
+		jmp Loop
 
+	OddFrame:
+
+
+		jsr BULLET.OddFrameUpdate
 		jmp Loop
 	}
 
