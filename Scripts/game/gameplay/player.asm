@@ -356,9 +356,6 @@
 
 	Exit:
 
-
-		.break
-
 		lda ZP.PlayerY
 		sta ZP.SpriteY, x
 
@@ -366,9 +363,7 @@
 		and #%11101111
 		cmp #STATE_CROUCH_RIGHT
 		beq IsCrouching
-
-		.break
-
+		
 		inc ZP.SpriteY, x 
 
 	IsCrouching:

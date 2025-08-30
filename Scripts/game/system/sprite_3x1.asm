@@ -76,13 +76,8 @@
 		lda MiddleLeftCharsMSB, x
 		sta CopyCharBytes.Branch.Source + 2
 
-		jsr CopyCharBytes
+		jmp CopyCharBytes
 
-		
-
-
-
-		rts
 	}
 
 

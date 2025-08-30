@@ -134,8 +134,12 @@
 
 	OddFrame:
 
+		inc TED.BORDER_COLOR
+
 
 		jsr BULLET.OddFrameUpdate
+
+		dec TED.BORDER_COLOR
 		jmp Loop
 	}
 

@@ -6,10 +6,11 @@
 	
 	Draw1x1: {
 
-		stx ZP.SpriteID
-
 		lda ZP.SpriteColour, x
 		sta ZP.Colour
+
+		lda ZP.SpriteMoved, x
+		beq BackupChars
 
 		jsr CalculatePositionAddresses
 
@@ -21,7 +22,6 @@
 
 		lda (ZP.ColourAddress), y
 		sta ZP.BulletStoredColours - MAX_SPRITES, x
-
 
 	CreateMaskedChars:
 
@@ -40,16 +40,13 @@
 		sta (ZP.ScreenAddress), y
 
 
-
 		rts
 	}
 
 
 	Copy1x1: {
 
-		// x = spriteID
-
-		.break
+		// x = spriteID, y = 0
 
 		lda SpriteCharAddress_LSB, x
 		sta CopyCharBytes.Branch.Dest + 1
@@ -62,20 +59,16 @@
 		jsr GetBgCharAddress
 
 		lda ZP.SpriteState, x
-		tay
+		tax
 
-		lda BulletCharLSB, y
+		lda BulletCharLSB, x
 		sta CopyCharBytes.Branch.Source + 1
 
 		lda #$0F
 		sta CopyCharBytes.Branch.Source + 2
 
-		ldy #0
+		jmp CopyCharBytes
 
-		jsr CopyCharBytes
-
-
-		rts
 
 	}
 
