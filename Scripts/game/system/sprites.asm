@@ -28,10 +28,10 @@
 	* = * "Sprite Char Addresses"
 
 	SpriteCharAddress_LSB:	.fill MAX_SPRITES, <[CHARSET_ADDRESS + ([PLAYER_CHAR_START + (i * 6)] * 8)]
-							.fill MAX_BULLETS, <[CHARSET_ADDRESS + ([PLAYER_CHAR_START + (MAX_SPRITES * 6)] * 8)] + (i * 8)
+							.fill MAX_BULLETS, <[[CHARSET_ADDRESS + ([PLAYER_CHAR_START + (MAX_SPRITES * 6)] * 8)] + (i * 8)]
 
 	SpriteCharAddress_MSB:	.fill MAX_SPRITES, >[CHARSET_ADDRESS + ([PLAYER_CHAR_START + (i * 6)] * 8)]
-							.fill MAX_BULLETS, >[CHARSET_ADDRESS + ([PLAYER_CHAR_START + (MAX_SPRITES * 6)] * 8)] + (i * 8)
+							.fill MAX_BULLETS, >[[CHARSET_ADDRESS + ([PLAYER_CHAR_START + (MAX_SPRITES * 6)] * 8)] + (i * 8)]
 
 
 

@@ -17,13 +17,13 @@
 		lda #5
 		sta ZP.PlayerX
 
-		lda #0
-		sta ZP.PlayerOffset
-		sta ZP.PlayerFrame
-		sta ZP.JustScrolled
-		//sta ZP.PlayerBullets
-		sta ZP.PlayerState
-		sta ZP.FireFrames
+		ldx #0
+		stx ZP.PlayerOffset
+		stx ZP.PlayerFrame
+		stx ZP.JustScrolled
+		stx ZP.PlayerBullets
+		stx ZP.PlayerState
+		stx ZP.FireFrames
 		//sta ZP.PlayerWeapon
 
 		lda #1
@@ -31,10 +31,11 @@
 		sta ZP.PlayerMoved
 		sta ZP.PlayerTimer
 		sta ZP.PlayerBullets
+
+		lda #WEAPON_FLAME
 		sta ZP.PlayerWeapon
 
-		ldx #0
-
+		
 		jsr SPRITE.CalculatePositionAddresses
 
 		jsr SPRITE.BackupChars
@@ -324,6 +325,10 @@
 
 		lda ZP.PlayerState
 		and #%00010000
+		lsr
+		lsr
+		lsr
+		lsr
 		pha
 		sta ZP.Temp1
 
@@ -352,17 +357,21 @@
 	Exit:
 
 
+		.break
+
 		lda ZP.PlayerY
 		sta ZP.SpriteY, x
 
 		lda ZP.PlayerState
 		and #%11101111
 		cmp #STATE_CROUCH_RIGHT
-		bne NotCrouching
+		beq IsCrouching
+
+		.break
 
 		inc ZP.SpriteY, x 
 
-	NotCrouching:
+	IsCrouching:
 
 
 		lda #0

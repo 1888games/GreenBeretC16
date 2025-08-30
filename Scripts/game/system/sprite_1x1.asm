@@ -1,22 +1,43 @@
 .namespace SPRITE {
 
-	BulletChar_LSB:		.fill 10, <[$0FA8 + (i * 8)]
+	BulletCharLSB:		.fill 10, <[$0FA8 + (i * 8)]
 
-
+	.label BULLET_CHAR_START = 243
+	
 	Draw1x1: {
 
+		stx ZP.SpriteID
+
+		lda ZP.SpriteColour, x
+		sta ZP.Colour
+
+		jsr CalculatePositionAddresses
+
+	BackupChars:
+
+		ldy #0
+		lda (ZP.ScreenAddress), y
+		sta ZP.BulletStoredChars - MAX_SPRITES, x
+
+		lda (ZP.ColourAddress), y
+		sta ZP.BulletStoredColours - MAX_SPRITES, x
 
 
-		lda ZP.SpriteDirty, x
-		beq DontDraw
+	CreateMaskedChars:
 
-		jsr CommonDraw
+		jsr Copy1x1
 
+	PlaceChars:
 
-		
+		ldy #0
 
-	DontDraw:
-
+		lda ZP.Colour
+		sta (ZP.ColourAddress), y
+	
+		lda ZP.SpriteID
+		clc
+		adc #BULLET_CHAR_START - MAX_SPRITES
+		sta (ZP.ScreenAddress), y
 
 
 
@@ -28,6 +49,8 @@
 
 		// x = spriteID
 
+		.break
+
 		lda SpriteCharAddress_LSB, x
 		sta CopyCharBytes.Branch.Dest + 1
 
@@ -35,53 +58,27 @@
 		sta CopyCharBytes.Branch.Dest + 2
 
 
-		ldy #0
-
 		lda ZP.BulletStoredChars - MAX_SPRITES, x
 		jsr GetBgCharAddress
 
-		ldx ZP.Frame
-		lda BulletCharLSB - MAX_SPRITES, x
+		lda ZP.SpriteState, x
+		tay
+
+		lda BulletCharLSB, y
 		sta CopyCharBytes.Branch.Source + 1
 
-		lda TopLeftCharsMSB, x
+		lda #$0F
 		sta CopyCharBytes.Branch.Source + 2
 
-
-
-			rts
-
-	}
-
-
-	BackupSingleChar: {
-
-	
 		ldy #0
-		lda (ZP.ScreenAddress), y
-		sta ZP.SpriteStoredChars + 0, x
 
-		lda (ZP.ColourAddress), y
-		sta ZP.SpriteStoredColours + 0, x
+		jsr CopyCharBytes
 
 
 		rts
+
 	}
 
 
-	RestoreSingleChar: {
-
-
-		ldy #0
-		lda ZP.SpriteStoredChars + 0, x
-		sta (ZP.ScreenAddress), y
-
-		lda ZP.SpriteStoredColours + 0, x
-		sta (ZP.ColourAddress), y
-
-
-
-		rts
-	}
 
 }

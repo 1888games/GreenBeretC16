@@ -2,6 +2,13 @@
 
 	* = * "Bullet"
 
+	BulletCharColour:	.byte WHITE + LUMINANCE_7 + 8
+						.byte WHITE + LUMINANCE_7 + 8
+						.byte YELLOW + LUMINANCE_5 + 8
+						.byte WHITE + LUMINANCE_7 + 8
+						.byte RED + LUMINANCE_4 + 8
+
+
 	Initialise: {
 
 		ldx #0
@@ -46,6 +53,10 @@
 
 			pla
 			sta ZP.SpriteState, x
+			lsr
+			tay
+			lda BulletCharColour, y
+			sta ZP.SpriteColour, x
 
 			lda #1
 			sta ZP.SpriteTimer, x
@@ -85,11 +96,12 @@
 
 		NotFirstFrame:
 
-			jsr Move
+			//jsr Move
 
 		IsFirstFrame:
 
-			jsr Draw
+	
+			jsr SPRITE.Draw1x1
 
 			ldx ZP.SpriteID
 
@@ -102,29 +114,6 @@
 		rts
 	}
 
-
-	Draw: {
-
-
-
-		BackupFirst:
-
-			ldy #0
-			lda (ZP.ScreenAddress), y
-			sta ZP.BulletStoredChars - MAX_SPRITES, x
-
-			lda (ZP.ColourAddress), y
-			sta ZP.BulletStoredColours - MAX_SPRITES, x
-			
-		NowDraw:	
-
-			
-
-
-
-
-		rts
-	}
 
 
 	Move: {
@@ -149,9 +138,7 @@
 		inc ZP.SpriteX, x
 		inc ZP.SpriteDirty, x
 
-		jsr SPRITE.RestoreSingleChar
-
-
+		
 
 		rts
 	}
