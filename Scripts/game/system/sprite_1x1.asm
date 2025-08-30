@@ -16,6 +16,7 @@
 
 	BackupChars:
 
+
 		ldy #0
 		lda (ZP.ScreenAddress), y
 		sta ZP.BulletStoredChars - MAX_SPRITES, x
@@ -42,6 +43,23 @@
 
 		rts
 	}
+
+
+
+	Restore1x1: {
+
+		ldy #0
+		lda ZP.BulletStoredChars - MAX_SPRITES, x
+		sta (ZP.ScreenAddress), y
+
+		lda ZP.BulletStoredColours - MAX_SPRITES, x
+		sta (ZP.ColourAddress), y
+
+
+		rts
+
+	}
+
 
 
 	Copy1x1: {

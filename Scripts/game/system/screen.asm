@@ -96,7 +96,7 @@
 		beq Scroll
 
 		lda #1
-		sta ZP.JustScrolled
+		sta ZP.JustScrolled 
 		rts
 
 	Scroll:

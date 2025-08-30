@@ -23,7 +23,7 @@ Roberto Muscedere, June Tate-Gans, Pablo Roldan.
 This is free software with ABSOLUTELY NO WARRANTY.
 See the "About VICE" command for more info.
  
-Main: random seed was: 0x68b2c594
+Main: random seed was: 0x68b3487b
 Main: command line was: C:\C64\Tools\Vice\xplus4.exe -8 Assets/disk.d64 -moncommands bin/main.vs bin/gb.prg
 Main: VICE system file directory: 'C:\C64\Tools\Vice\..'.
 Main: VICE system file search path: 'C:\C64\Tools\Vice;C:\C64\Tools\Vice\..'.
@@ -82,15 +82,15 @@ AUTOSTART: `bin/gb.prg' recognized as program/p00 file.
 Filesystem Image: Error - Cannot open file `Assets/disk.d64'.
 Error - Cannot attach disk image `Assets/disk.d64' to unit 8.
 Monitor playback command: al C:ff19 .BORDER_COLOR
-Monitor playback command: al C:f7 .SpriteStoredColours
+Monitor playback command: al C:fd .SpriteStoredColours
 Monitor playback command: al C:3000 .MAP_TEMP_LOCATION
 Monitor playback command: al C:2c .EnemyX
 Monitor playback command: al C:3c .EnemyY
 Monitor playback command: al C:139d .GoRight__0
-Monitor playback command: al C:153b .GoRight__1
+Monitor playback command: al C:1544 .GoRight__1
 Monitor playback command: al C:10 .STATE_WALK_LEFT
 Monitor playback command: al C:11d1 .GetSectorData
-Monitor playback command: al C:bb .SpriteStoredChars
+Monitor playback command: al C:c1 .SpriteStoredChars
 Monitor playback command: al C:a00 .Sprites
 Monitor playback command: al C:1a .CurrentSectorLength
 Monitor playback command: al C:10ee .Hud1
@@ -99,17 +99,17 @@ Monitor playback command: al C:ff06 .SCREEN_CONTROL
 Monitor playback command: al C:18 .CurrentSectorID
 Monitor playback command: al C:304 .IRQControlRegister1
 Monitor playback command: al C:3001 .SectorIDs
-Monitor playback command: al C:1633 .Restore3x1
+Monitor playback command: al C:1669 .Restore3x1
 Monitor playback command: al C:26 .SpriteCharAddress
 Monitor playback command: al C:24 .SectorMapAddress
 Monitor playback command: al C:2b .SpriteX
 Monitor playback command: al C:1442 .AlreadyCrouching
 Monitor playback command: al C:3b .SpriteY
-Monitor playback command: al C:18a4 .MiddleLeftCharsLSB
+Monitor playback command: al C:18e7 .MiddleLeftCharsLSB
 Monitor playback command: al C:dd00 .BANK_SELECT
 Monitor playback command: al C:a8 .EnemyDirty
 Monitor playback command: al C:1375 .FrameUpdate
-Monitor playback command: al C:1779 .NoBullets
+Monitor playback command: al C:17bc .NoBullets
 Monitor playback command: al C:2 .GAME_MODE_PLAY
 Monitor playback command: al C:19 .SectorXOffset
 Monitor playback command: al C:149b .IsCrouching
@@ -119,29 +119,29 @@ Monitor playback command: al C:14ac .NotRight
 Monitor playback command: al C:1e .FineScroll
 Monitor playback command: al C:1289 .SectorLoop
 Monitor playback command: al C:8 .BackgroundCharAddress
-Monitor playback command: al C:19ae .MiddleRightCharsMSB
+Monitor playback command: al C:19f1 .MiddleRightCharsMSB
 Monitor playback command: al C:8 .UP_MASK
 Monitor playback command: al C:14ca .Stab
-Monitor playback command: al C:1767 .CopySpriteData
+Monitor playback command: al C:17aa .CopySpriteData
 Monitor playback command: al C:1 .ONE
 Monitor playback command: al C:13ee .GoLeft__0
-Monitor playback command: al C:153b .GoLeft__1
+Monitor playback command: al C:1538 .GoLeft__1
 Monitor playback command: al C:c .PURPLE_MULT
 Monitor playback command: al C:a .STATE_CROUCH_RIGHT
 Monitor playback command: al C:1020 .IRQ
 Monitor playback command: al C:1e .BL
 Monitor playback command: al C:a7 .PlayerDirty
-Monitor playback command: al C:1510 .OddFrameUpdate
+Monitor playback command: al C:14ee .OddFrameUpdate
 Monitor playback command: al C:35 .BulletX
 Monitor playback command: al C:45 .BulletY
 Monitor playback command: al C:12cc .DoneAll
-Monitor playback command: al C:15dd .PlaceChars__0
-Monitor playback command: al C:1698 .PlaceChars__1
+Monitor playback command: al C:1613 .PlaceChars__0
+Monitor playback command: al C:16ce .PlaceChars__1
 Monitor playback command: al C:100e .Entry
 Monitor playback command: al C:1061 .HudEndIRQ
 Monitor playback command: al C:2 .SCREEN_ADDRESS
 Monitor playback command: al C:1388 .EvenFrameUpdate
-Monitor playback command: al C:1962 .TopRightCharsMSB
+Monitor playback command: al C:19a5 .TopRightCharsMSB
 Monitor playback command: al C:d .TrucksColour
 Monitor playback command: al C:2 .ScreenAddress
 Monitor playback command: al C:f .X
@@ -152,44 +152,44 @@ Monitor playback command: al C:138f .CanMove
 Monitor playback command: al C:122f .CharLoop
 Monitor playback command: al C:2a8 .SFX_CHANNEL_1
 Monitor playback command: al C:ff .ALL_ON
-Monitor playback command: al C:181e .Bg
+Monitor playback command: al C:1861 .Bg
 Monitor playback command: al C:3800 .Charset
 Monitor playback command: al C:1346 .Initialise__0
 Monitor playback command: al C:14e2 .Initialise__1
-Monitor playback command: al C:193c .TopLeftCharsMSB
-Monitor playback command: al C:1798 .TopRight
+Monitor playback command: al C:197f .TopLeftCharsMSB
+Monitor playback command: al C:17db .TopRight
 Monitor playback command: al C:0 .PLAYER_SPRITE_ID
 Monitor playback command: al C:12 .Temp2
 Monitor playback command: al C:1388 .CheckTimer
 Monitor playback command: al C:11 .Temp1
 Monitor playback command: al C:17 .CurrentSectorNumber
-Monitor playback command: al C:17e9 .BottomLeft
+Monitor playback command: al C:182c .BottomLeft
 Monitor playback command: al C:14c0 .Fire__0
-Monitor playback command: al C:14ee .Fire__1
-Monitor playback command: al C:139 .BulletStoredColours
+Monitor playback command: al C:1554 .Fire__1
+Monitor playback command: al C:13f .BulletStoredColours
 Monitor playback command: al C:0 .PAL
 Monitor playback command: al C:7 .SFX_CORRECT
-Monitor playback command: al C:165e .Copy3x1
+Monitor playback command: al C:1694 .Copy3x1
 Monitor playback command: al C:1279 .FillScreen
 Monitor playback command: al C:0 .ZERO
 Monitor playback command: al C:100c .upstart_end
 Monitor playback command: al C:1019 .WaitForIRQ
 Monitor playback command: al C:1169 .EvenFrame
-Monitor playback command: al C:1564 .TwoByThree__0
-Monitor playback command: al C:15b2 .TwoByThree__1
-Monitor playback command: al C:15e8 .TwoByThree__2
-Monitor playback command: al C:17d3 .TwoByThree__3
-Monitor playback command: al C:1593 .RestoreChars
-Monitor playback command: al C:1737 .CommonDraw
+Monitor playback command: al C:159a .TwoByThree__0
+Monitor playback command: al C:15e8 .TwoByThree__1
+Monitor playback command: al C:161e .TwoByThree__2
+Monitor playback command: al C:1816 .TwoByThree__3
+Monitor playback command: al C:15c9 .RestoreChars
+Monitor playback command: al C:177a .CommonDraw
 Monitor playback command: al C:76 .EnemyTime
 Monitor playback command: al C:2c .FACE_LEFT_OFFSET
 Monitor playback command: al C:302a .SectorMapData
 Monitor playback command: al C:2 .SFX_CATCH
 Monitor playback command: al C:f3 .BULLET_CHAR_START
 Monitor playback command: al C:131a .NoWrap
-Monitor playback command: al C:187e .TopRightCharsLSB
+Monitor playback command: al C:18c1 .TopRightCharsLSB
 Monitor playback command: al C:9 .MAX_ENEMIES
-Monitor playback command: al C:152e .EndLoop
+Monitor playback command: al C:1513 .EndLoop
 Monitor playback command: al C:13 .JustScrolled
 Monitor playback command: al C:5c .EnemyOffset
 Monitor playback command: al C:121f .CheckLoop
@@ -197,23 +197,23 @@ Monitor playback command: al C:1 .SFX_BUTTON
 Monitor playback command: al C:ff3f .BANK_IN_RAM
 Monitor playback command: al C:4 .joyLeftMask
 Monitor playback command: al C:122f .LoadChar
-Monitor playback command: al C:1858 .TopLeftCharsLSB
+Monitor playback command: al C:189b .TopLeftCharsLSB
 Monitor playback command: al C:141e .GoDown
-Monitor playback command: al C:17c8 .MiddleRight
+Monitor playback command: al C:180b .MiddleRight
 Monitor playback command: al C:ff15 .BACKGROUND_COLOR
 Monitor playback command: al C:15 .JOY_READING
 Monitor playback command: al C:2 .WEAPON_GUN
 Monitor playback command: al C:1 .NTSC
 Monitor playback command: al C:0 .WEAPON_KNIFE
-Monitor playback command: al C:1b20 .ReadJoystick
+Monitor playback command: al C:1b63 .ReadJoystick
 Monitor playback command: al C:3b .PlayerY
-Monitor playback command: al C:181a .CopyCharBytes
+Monitor playback command: al C:185d .CopyCharBytes
 Monitor playback command: al C:2b .PlayerX
 Monitor playback command: al C:21 .ScrollSectorLength
 Monitor playback command: al C:2 .RIGHT_MASK
 Monitor playback command: al C:6f .BulletTimer
 Monitor playback command: al C:116f .OddFrame
-Monitor playback command: al C:1674 .BulletCharLSB
+Monitor playback command: al C:16aa .BulletCharLSB
 Monitor playback command: al C:5 .SFX_WRONG
 Monitor playback command: al C:1486 .FireRight
 Monitor playback command: al C:93 .PlayerWeapon
@@ -225,31 +225,31 @@ Monitor playback command: al C:75 .PlayerTime
 Monitor playback command: al C:b .CYAN_MULT
 Monitor playback command: al C:1051 .SetMainIRQ
 Monitor playback command: al C:1150 .ResetFineScroll
-Monitor playback command: al C:181c .Branch
-Monitor playback command: al C:1743 .GetBgCharAddress
+Monitor playback command: al C:185f .Branch
+Monitor playback command: al C:1786 .GetBgCharAddress
 Monitor playback command: al C:89 .PlayerBullets
-Monitor playback command: al C:1529 .NotFirstFrame
+Monitor playback command: al C:1507 .NotFirstFrame
 Monitor playback command: al C:ff0b .RASTER_Y
 Monitor playback command: al C:1123 .Loop__0
 Monitor playback command: al C:115f .Loop__1
 Monitor playback command: al C:11a3 .Loop__2
 Monitor playback command: al C:1336 .Loop__3
 Monitor playback command: al C:14e6 .Loop__4
-Monitor playback command: al C:14f1 .Loop__5
-Monitor playback command: al C:1512 .Loop__6
-Monitor playback command: al C:181c .Loop__7
+Monitor playback command: al C:14f0 .Loop__5
+Monitor playback command: al C:1557 .Loop__6
+Monitor playback command: al C:185f .Loop__7
 Monitor playback command: al C:66 .EnemyTimer
-Monitor playback command: al C:1832 .Dest
+Monitor playback command: al C:1875 .Dest
 Monitor playback command: al C:8 .joyRightMask
 Monitor playback command: al C:d .ForestColour
-Monitor playback command: al C:14f .ScreenRowLSB
+Monitor playback command: al C:155 .ScreenRowLSB
 Monitor playback command: al C:0 .FACE_RIGHT_OFFSET
-Monitor playback command: al C:1801 .BottomRight
+Monitor playback command: al C:1844 .BottomRight
 Monitor playback command: al C:8a .EnemyBullets
-Monitor playback command: al C:183e .CalculatePositionAddresses
+Monitor playback command: al C:1881 .CalculatePositionAddresses
 Monitor playback command: al C:ff07 .SCREEN_CONTROL_2
 Monitor playback command: al C:1d .RowsDrawn
-Monitor playback command: al C:16a6 .Copy1x1
+Monitor playback command: al C:16e9 .Copy1x1
 Monitor playback command: al C:65 .SpriteTimer
 Monitor playback command: al C:4 .WEAPON_FLAME
 Monitor playback command: al C:0 .FALSE
@@ -261,15 +261,17 @@ Monitor playback command: al C:60 .LUMINANCE_6
 Monitor playback command: al C:2a .PerformFrameCodeFlag
 Monitor playback command: al C:30 .LUMINANCE_3
 Monitor playback command: al C:40 .LUMINANCE_4
-Monitor playback command: al C:19d4 .BottomLeftCharsMSB
+Monitor playback command: al C:1a17 .BottomLeftCharsMSB
 Monitor playback command: al C:10 .LUMINANCE_1
 Monitor playback command: al C:8 .WEAPON_GRENADE
 Monitor playback command: al C:1143 .NewLevel
 Monitor playback command: al C:13b3 .NotCrouchingLeft
 Monitor playback command: al C:20 .LUMINANCE_2
 Monitor playback command: al C:0 .LUMINANCE_0
+Monitor playback command: al C:1524 .NotKnife
 Monitor playback command: al C:4 .DOWN_MASK
 Monitor playback command: al C:1089 .MainIRQ
+Monitor playback command: al C:1551 .NoWrapRight
 Monitor playback command: al C:a .GirderColour
 Monitor playback command: al C:122b .Okay
 Monitor playback command: al C:13e0 .NotMoved__0
@@ -277,23 +279,25 @@ Monitor playback command: al C:141b .NotMoved__1
 Monitor playback command: al C:14 .MultiplexerIRQLine
 Monitor playback command: al C:22 .SectorDataAddress
 Monitor playback command: al C:11a1 .CopyMapTo200
-Monitor playback command: al C:1695 .CreateMaskedChars
+Monitor playback command: al C:16cb .CreateMaskedChars
 Monitor playback command: al C:93 .SpriteWeapon
 Monitor playback command: al C:1 .GAME_MODE_DEAD
 Monitor playback command: al C:70 .LUMINANCE_7
 Monitor playback command: al C:12de .Exit__0
 Monitor playback command: al C:137d .Exit__1
 Monitor playback command: al C:148d .Exit__2
-Monitor playback command: al C:1742 .Exit__3
+Monitor playback command: al C:1785 .Exit__3
 Monitor playback command: al C:ff16 .EXTENDED_BG_COLOR_1
+Monitor playback command: al C:1529 .NotGrenade
 Monitor playback command: al C:ff17 .EXTENDED_BG_COLOR_2
 Monitor playback command: al C:89 .SpriteBullets
 Monitor playback command: al C:0 .STATE_WALK_RIGHT
 Monitor playback command: al C:40 .joyFireMask
-Monitor playback command: al C:168 .ScreenRowMSB
+Monitor playback command: al C:bb .BulletMoved
+Monitor playback command: al C:16e .ScreenRowMSB
 Monitor playback command: al C:a .CharID
-Monitor playback command: al C:1624 .Backup3x1
-Monitor playback command: al C:151f .Ready
+Monitor playback command: al C:165a .Backup3x1
+Monitor playback command: al C:14fd .Ready
 Monitor playback command: al C:12ed .SetFineScroll
 Monitor playback command: al C:3000 .NumSectors2
 Monitor playback command: al C:123b .StoreColour
@@ -309,9 +313,10 @@ Monitor playback command: al C:16 .ScreenColumnsDrawn
 Monitor playback command: al C:147d .FireLeft
 Monitor playback command: al C:c .Frame
 Monitor playback command: al C:f .YELLOW_MULT
-Monitor playback command: al C:163e .Place3x1
-Monitor playback command: al C:1725 .Draw
-Monitor playback command: al C:181 .ShowDebug
+Monitor playback command: al C:1523 .IsKnife
+Monitor playback command: al C:1674 .Place3x1
+Monitor playback command: al C:1768 .Draw
+Monitor playback command: al C:187 .ShowDebug
 Monitor playback command: al C:0 .GAME_MODE_TITLE
 Monitor playback command: al C:14b8 .NotLeft
 Monitor playback command: al C:b .Colour
@@ -320,20 +325,23 @@ Monitor playback command: al C:9d .SpriteFrame
 Monitor playback command: al C:5 .COLOR_ADDRESS
 Monitor playback command: al C:a7 .SpriteDirty
 Monitor playback command: al C:10 .SCROLL_THRESHOLD
-Monitor playback command: al C:17b0 .MiddleLeft
+Monitor playback command: al C:17f3 .MiddleLeft
 Monitor playback command: al C:3011 .SectorData
 Monitor playback command: al C:1201 .DrawSector
 Monitor playback command: al C:1f .ThisSectorXOffset
-Monitor playback command: al C:147 .MSB_Off
+Monitor playback command: al C:14d .MSB_Off
 Monitor playback command: al C:113d .NoScore
-Monitor playback command: al C:16c9 .RowStart_LSB
+Monitor playback command: al C:170c .RowStart_LSB
 Monitor playback command: al C:1466 .FireWeapon
 Monitor playback command: al C:a .MAX_SPRITES
 Monitor playback command: al C:e .Amount
 Monitor playback command: al C:5 .ColourAddress
 Monitor playback command: al C:2 .joyDownMask
-Monitor playback command: al C:14fc .Found
+Monitor playback command: al C:1562 .Found
 Monitor playback command: al C:8 .SFX_ALARM
+Monitor playback command: al C:1532 .NoRestore
+Monitor playback command: al C:1528 .IsGrenade
+Monitor playback command: al C:151d .CheckType
 Monitor playback command: al C:14dd .BulletCharColour
 Monitor playback command: al C:2800 .VIDEO_OFFSET
 Monitor playback command: al C:1318 .NotNextSector
@@ -341,32 +349,33 @@ Monitor playback command: al C:28 .SpriteDataAddress
 Monitor playback command: al C:55 .BulletState
 Monitor playback command: al C:1c .CurrentSectorDrawn
 Monitor playback command: al C:9e .EnemyFrame
-Monitor playback command: al C:18ca .MiddleRightCharsLSB
+Monitor playback command: al C:190d .MiddleRightCharsLSB
 Monitor playback command: al C:d .SpriteID
 Monitor playback command: al C:1278 .Done__0
 Monitor playback command: al C:13dd .Done__1
-Monitor playback command: al C:1b20 .INPUT
-Monitor playback command: al C:1545 .DoBackup
+Monitor playback command: al C:1b63 .INPUT
+Monitor playback command: al C:157b .DoBackup
 Monitor playback command: al C:1 .LEFT_MASK
-Monitor playback command: al C:1715 .SpriteCharAddress_MSB
-Monitor playback command: al C:1540 .BackupChars__0
-Monitor playback command: al C:1689 .BackupChars__1
+Monitor playback command: al C:1758 .SpriteCharAddress_MSB
+Monitor playback command: al C:1576 .BackupChars__0
+Monitor playback command: al C:16bf .BackupChars__1
 Monitor playback command: al C:d .GREEN_MULT
 Monitor playback command: al C:3800 .CHARSET_ADDRESS__0
 Monitor playback command: al C:ff13 .CHARSET_ADDRESS__1
 Monitor playback command: al C:3 .GAME_MODE_OVER
 Monitor playback command: al C:139c .NoDraw
 Monitor playback command: al C:2a6 .PAL_NTSC_Flag
-Monitor playback command: al C:1a20 .MaskTable
+Monitor playback command: al C:1a63 .MaskTable
 Monitor playback command: al C:200 .MAP_LOCATION
 Monitor playback command: al C:1443 .CheckReleaseDown
 Monitor playback command: al C:2000 .MAIN
 Monitor playback command: al C:137e .NotFire__0
 Monitor playback command: al C:14d0 .NotFire__1
-Monitor playback command: al C:1780 .TopLeft
+Monitor playback command: al C:17c3 .TopLeft
 Monitor playback command: al C:4 .FrameSwitch
 Monitor playback command: al C:13e3 .SetWalkTime
-Monitor playback command: al C:16e2 .RowStart_MSB
+Monitor playback command: al C:16dc .Restore1x1
+Monitor playback command: al C:1725 .RowStart_MSB
 Monitor playback command: al C:12f8 .Scroll__0
 Monitor playback command: al C:132a .Scroll__1
 Monitor playback command: al C:a .RED_MULT
@@ -382,16 +391,16 @@ Monitor playback command: al C:14dc .NotCrouching__3
 Monitor playback command: al C:b1 .PlayerMoved
 Monitor playback command: al C:94 .EnemyWeapon
 Monitor playback command: al C:0 .HudIRQLine
-Monitor playback command: al C:1916 .BottomRightCharsLSB
+Monitor playback command: al C:1959 .BottomRightCharsLSB
 Monitor playback command: al C:14 .FireFrames
 Monitor playback command: al C:9 .WHITE_MULT
 Monitor playback command: al C:b7 .PLAYER_CHAR_START
 Monitor playback command: al C:1303 .DoScroll
 Monitor playback command: al C:3400 .SCREEN_RAM
 Monitor playback command: al C:ff14 .VIDEO_ADDRESS
-Monitor playback command: al C:1529 .IsFirstFrame
+Monitor playback command: al C:150a .IsFirstFrame
 Monitor playback command: al C:9 .MissilesColour
-Monitor playback command: al C:18f0 .BottomLeftCharsLSB
+Monitor playback command: al C:1933 .BottomLeftCharsLSB
 Monitor playback command: al C:302a .Sector1
 Monitor playback command: al C:ff0a .INTERRUPT_MASK_REGISTER
 Monitor playback command: al C:313e .Sector2
@@ -404,18 +413,18 @@ Monitor playback command: al C:fffe .INTERRUPT_VECTOR__0
 Monitor playback command: al C:fffe .INTERRUPT_VECTOR__1
 Monitor playback command: al C:1020 .HudBeginIRQ
 Monitor playback command: al C:1 .STATE_WALK
-Monitor playback command: al C:1705 .SpriteCharAddress_LSB
+Monitor playback command: al C:1748 .SpriteCharAddress_LSB
 Monitor playback command: al C:1121 .DrawHud
-Monitor playback command: al C:1823 .Source
+Monitor playback command: al C:1866 .Source
 Monitor playback command: al C:1332 .Clear
 Monitor playback command: al C:5b .PlayerOffset
 Monitor playback command: al C:11f4 .NotFirst
 Monitor playback command: al C:9d .PlayerFrame
 Monitor playback command: al C:6 .SFX_CONVEYOR
 Monitor playback command: al C:20 .ScrollSectorNumber
-Monitor playback command: al C:13f .MSB_On
+Monitor playback command: al C:145 .MSB_On
 Monitor playback command: al C:30 .HudEndLine
-Monitor playback command: al C:1534 .Move
+Monitor playback command: al C:151d .Move
 Monitor playback command: al C:10b6 .SetColoursAndMode
 Monitor playback command: al C:b2 .EnemyMoved
 Monitor playback command: al C:35be .Sector6
@@ -427,12 +436,12 @@ Monitor playback command: al C:0 .ResetBorderIRQLine
 Monitor playback command: al C:7 .SourceAddress
 Monitor playback command: al C:4b .PlayerState
 Monitor playback command: al C:14d9 .NotDown
-Monitor playback command: al C:19fa .BottomRightCharsMSB
+Monitor playback command: al C:1a3d .BottomRightCharsMSB
 Monitor playback command: al C:12cf .FloorLoop
-Monitor playback command: al C:16fb .SpriteStart
-Monitor playback command: al C:1988 .MiddleLeftCharsMSB
+Monitor playback command: al C:173e .SpriteStart
+Monitor playback command: al C:19cb .MiddleLeftCharsMSB
 Monitor playback command: al C:0 .NIL
-Monitor playback command: al C:13f .TED
+Monitor playback command: al C:145 .TED
 Monitor playback command: al C:13c0 .AlreadyWalking
 Monitor playback command: al C:1400 .NotCrouchRight
 Monitor playback command: al C:4 .SFX_CRASH
@@ -441,8 +450,8 @@ Monitor playback command: al C:0 .STATE_IDLE
 Monitor playback command: al C:1a .STATE_CROUCH_LEFT
 Monitor playback command: al C:b1 .SpriteMoved
 Monitor playback command: al C:e .BLUE_MULT
-Monitor playback command: al C:133 .BulletStoredChars
-Monitor playback command: al C:167e .Draw1x1
+Monitor playback command: al C:139 .BulletStoredChars
+Monitor playback command: al C:16b4 .Draw1x1
 Monitor playback command: al C:c8 .MainIRQLine
 Monitor playback command: al C:7f .SpriteColour
 Closed monitor command playback file: bin/main.vs
@@ -452,7 +461,7 @@ Sound: reSID: MOS6581, filter on, sampling rate 48000Hz - resampling, pass to 21
 VSync: Sync reset
 Monitor UI: 'C64 Pro*' font found, enabling PETSCII output.
 Monitor UI: using font 'C64 Pro Mono 9' (Family:C64 Pro Mono, Size:9, Variations:-) PETSCII:yes Terminal Scale:1.000000
-AUTOSTART: Injecting program data at $1001 (size $10dc)
+AUTOSTART: Injecting program data at $1001 (size $110a)
 AUTOSTART: Ready
 AUTOSTART: Turning Warp mode off.
 AUTOSTART: Starting program.
@@ -476,7 +485,7 @@ MonitorHeight=659
 MonitorFont="C64 Pro Mono 9"
 Window0Height=722
 Window0Width=1046
-Window0Xpos=1019
+Window0Xpos=1218
 Window0Ypos=403
 FunctionLowName=""
 FunctionHighName=""
@@ -494,7 +503,7 @@ Drive8TrueEmulation=0
 DriveSoundEmulationVolume=1612
 FFMPEGVideoBitrate=200000
 
--default -logfile "E:\Dropbox\C64\Projects\Green Beret C16/bin/main_ViceLog.txt" +confirmonexit -saveres -monitorfont "C64 Pro Mono 9" -monitorxpos "2019" -monitorypos "626" -monitorwidth "961" -monitorheight "659" -windowxpos "1019" -windowypos "403" -windowwidth "1046" -windowheight "722" -functionlo "" -functionhi "" -ramsize "16" -TEDborders "2" +acia -joydev1 "2" -autostartprgmode "1" +drive8truedrive -drivesoundvolume "1612" -ffmpegvideobitrate "200000"
+-default -logfile "E:\Dropbox\C64\Projects\Green Beret C16/bin/main_ViceLog.txt" +confirmonexit -saveres -monitorfont "C64 Pro Mono 9" -monitorxpos "2019" -monitorypos "626" -monitorwidth "961" -monitorheight "659" -windowxpos "1218" -windowypos "403" -windowwidth "1046" -windowheight "722" -functionlo "" -functionhi "" -ramsize "16" -TEDborders "2" +acia -joydev1 "2" -autostartprgmode "1" +drive8truedrive -drivesoundvolume "1612" -ffmpegvideobitrate "200000"
 Mainlock: VICE thread initiating shutdown
 Mainlock: VICE thread is exiting
 Main: VICE thread has been joined.

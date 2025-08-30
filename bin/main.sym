@@ -3,10 +3,10 @@
 .label LUMINANCE_6=$60
 .label LUMINANCE_3=$30
 .label LUMINANCE_4=$40
-.label INPUT=$1b20 {
+.label INPUT=$1b63 {
   .label joyLeftMask=$4
   .label joyRightMask=$8
-  .label ReadJoystick=$1b20 {
+  .label ReadJoystick=$1b63 {
   }
   .label joyFireMask=$40
   .label joyDownMask=$2
@@ -123,11 +123,11 @@
   .label SpriteID=$d
   .label PlayerColour=$7f
   .label PerformFrameCodeFlag=$2a
-  .label SpriteStoredColours=$f7
+  .label SpriteStoredColours=$fd
   .label EnemyX=$2c
   .label EnemyTime=$76
   .label EnemyY=$3c
-  .label SpriteStoredChars=$bb
+  .label SpriteStoredChars=$c1
   .label CurrentSectorLength=$1a
   .label SectorDataAddress=$22
   .label JustScrolled=$13
@@ -139,6 +139,7 @@
   .label SpriteBullets=$89
   .label SectorMapAddress=$24
   .label SpriteX=$2b
+  .label BulletMoved=$bb
   .label CharID=$a
   .label PlayerMoved=$b1
   .label SpriteY=$3b
@@ -191,8 +192,8 @@
   .label RowsDrawn=$1d
   .label SpriteMoved=$b1
   .label SpriteTimer=$65
-  .label BulletStoredColours=$139
-  .label BulletStoredChars=$133
+  .label BulletStoredColours=$13f
+  .label BulletStoredChars=$139
   .label SpriteDataAddress=$28
   .label BulletState=$55
   .label CurrentSectorDrawn=$1c
@@ -266,7 +267,7 @@
   }
 }
 .label JOY_PORT_2=$dc00
-.label ShowDebug=$181
+.label ShowDebug=$187
 .label STATE_WALK=$1
 .label GAME_MODE_TITLE=$0
 .label SFX_CONVEYOR=$6
@@ -298,120 +299,129 @@
 .label MAX_SPRITES=$a
 .label Charset=$3800
 .namespace SPRITE {
-  .label MiddleRightCharsLSB=$18ca
-  .label BottomLeftCharsLSB=$18f0
-  .label Place3x1=$163e {
+  .label MiddleRightCharsLSB=$190d
+  .label BottomLeftCharsLSB=$1933
+  .label Place3x1=$1674 {
   }
-  .label MiddleRightCharsMSB=$19ae
-  .label BottomLeftCharsMSB=$19d4
-  .label Draw=$1725 {
+  .label MiddleRightCharsMSB=$19f1
+  .label BottomLeftCharsMSB=$1a17
+  .label Draw=$1768 {
   }
-  .label CopySpriteData=$1767 {
-    .label NoBullets=$1779
+  .label CopySpriteData=$17aa {
+    .label NoBullets=$17bc
   }
-  .label SpriteCharAddress_MSB=$1715
+  .label SpriteCharAddress_MSB=$1758
   .label BL=$1e
-  .label RestoreChars=$1593 {
-    .label TwoByThree=$15b2
-  }
-  .label SpriteCharAddress_LSB=$1705
-  .label CommonDraw=$1737 {
-    .label Exit=$1742
-  }
-  .label BackupChars=$1540 {
-    .label DoBackup=$1545
-    .label TwoByThree=$1564
-  }
-  .label PlaceChars=$15dd {
+  .label RestoreChars=$15c9 {
     .label TwoByThree=$15e8
   }
+  .label SpriteCharAddress_LSB=$1748
+  .label CommonDraw=$177a {
+    .label Exit=$1785
+  }
+  .label BackupChars=$1576 {
+    .label DoBackup=$157b
+    .label TwoByThree=$159a
+  }
+  .label PlaceChars=$1613 {
+    .label TwoByThree=$161e
+  }
   .label BULLET_CHAR_START=$f3
-  .label TopRightCharsLSB=$187e
-  .label MaskTable=$1a20
-  .label TopRightCharsMSB=$1962
-  .label GetBgCharAddress=$1743 {
+  .label TopRightCharsLSB=$18c1
+  .label MaskTable=$1a63
+  .label TopRightCharsMSB=$19a5
+  .label GetBgCharAddress=$1786 {
   }
-  .label Restore3x1=$1633 {
+  .label Restore3x1=$1669 {
   }
-  .label RowStart_LSB=$16c9
-  .label RowStart_MSB=$16e2
-  .label TopLeftCharsMSB=$193c
-  .label TopLeftCharsLSB=$1858
-  .label BottomRightCharsMSB=$19fa
-  .label SpriteStart=$16fb
-  .label MiddleLeftCharsMSB=$1988
-  .label MiddleLeftCharsLSB=$18a4
-  .label Backup3x1=$1624 {
+  .label Restore1x1=$16dc {
   }
-  .label CalculatePositionAddresses=$183e {
+  .label RowStart_LSB=$170c
+  .label RowStart_MSB=$1725
+  .label TopLeftCharsMSB=$197f
+  .label TopLeftCharsLSB=$189b
+  .label BottomRightCharsMSB=$1a3d
+  .label SpriteStart=$173e
+  .label MiddleLeftCharsMSB=$19cb
+  .label MiddleLeftCharsLSB=$18e7
+  .label Backup3x1=$165a {
   }
-  .label BottomRightCharsLSB=$1916
-  .label Copy1x1=$16a6 {
+  .label CalculatePositionAddresses=$1881 {
   }
-  .label CopyCharBytes=$181a {
-    .label Loop=$181c
-    .label Branch=$181c {
-      .label Dest=$1832
-      .label Bg=$181e
-      .label Source=$1823
+  .label BottomRightCharsLSB=$1959
+  .label Copy1x1=$16e9 {
+  }
+  .label CopyCharBytes=$185d {
+    .label Loop=$185f
+    .label Branch=$185f {
+      .label Dest=$1875
+      .label Bg=$1861
+      .label Source=$1866
     }
   }
-  .label Copy3x1=$165e {
+  .label Copy3x1=$1694 {
   }
-  .label Draw1x1=$167e {
-    .label PlaceChars=$1698
-    .label CreateMaskedChars=$1695
-    .label BackupChars=$1689
+  .label Draw1x1=$16b4 {
+    .label PlaceChars=$16ce
+    .label CreateMaskedChars=$16cb
+    .label BackupChars=$16bf
   }
-  .label BulletCharLSB=$1674
+  .label BulletCharLSB=$16aa
 }
 .label SFX_ALARM=$8
 .label PLAYER_SPRITE_ID=$0
 .label NIL=$0
 .label FACE_RIGHT_OFFSET=$0
-.label TED=$13f {
+.label TED=$145 {
   .label RASTER_Y=$ff0b
   .label EXTENDED_BG_COLOR_1=$ff16
   .label EXTENDED_BG_COLOR_2=$ff17
   .label INTERRUPT_MASK_REGISTER=$ff0a
   .label BORDER_COLOR=$ff19
   .label INTERRUPT_VECTOR=$fffe
-  .label ScreenRowMSB=$168
+  .label ScreenRowMSB=$16e
   .label VERTICAL_CONTROL=$ff06
-  .label ScreenRowLSB=$14f
+  .label ScreenRowLSB=$155
   .label BACKGROUND_COLOR=$ff15
   .label BANK_SELECT=$dd00
   .label CHARSET_ADDRESS=$ff13
   .label COLOR_ADDRESS=$5
   .label SCREEN_CONTROL_2=$ff07
-  .label MSB_On=$13f
+  .label MSB_On=$145
   .label SCREEN_ADDRESS=$2
   .label VIDEO_ADDRESS=$ff14
-  .label MSB_Off=$147
+  .label MSB_Off=$14d
   .label COLOR_RAM=$3000
   .label SCREEN_CONTROL=$ff06
   .label MEMORY_SETUP=$d018
   .label SND_1_CHAR_ROM_RAM=$ff12
 }
 .namespace BULLET {
-  .label Move=$1534 {
-    .label GoLeft=$153b
-    .label GoRight=$153b
+  .label Move=$151d {
+    .label NotGrenade=$1529
+    .label NoRestore=$1532
+    .label IsKnife=$1523
+    .label IsGrenade=$1528
+    .label CheckType=$151d
+    .label NotKnife=$1524
+    .label GoLeft=$1538
+    .label GoRight=$1544
+    .label NoWrapRight=$1551
   }
   .label BulletCharColour=$14dd
-  .label Fire=$14ee {
-    .label Loop=$14f1
-    .label Found=$14fc
+  .label Fire=$1554 {
+    .label Loop=$1557
+    .label Found=$1562
   }
   .label Initialise=$14e2 {
     .label Loop=$14e6
   }
-  .label OddFrameUpdate=$1510 {
-    .label Loop=$1512
-    .label Ready=$151f
-    .label EndLoop=$152e
-    .label IsFirstFrame=$1529
-    .label NotFirstFrame=$1529
+  .label OddFrameUpdate=$14ee {
+    .label Loop=$14f0
+    .label Ready=$14fd
+    .label EndLoop=$1513
+    .label IsFirstFrame=$150a
+    .label NotFirstFrame=$1507
   }
 }
 .label SFX_CRASH=$4

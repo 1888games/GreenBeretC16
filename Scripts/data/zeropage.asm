@@ -117,11 +117,14 @@ ZP: {
     SpriteMoved:	
     PlayerMoved:			.byte 0
     EnemyMoved:				.fill MAX_ENEMIES, 0
+    BulletMoved:            .fill MAX_BULLETS, 02
+    
 
-
+   * = * "SpriteStoredChars" virtual
     SpriteStoredChars:		.fill MAX_SPRITES * 6, 0
     SpriteStoredColours:	.fill MAX_SPRITES * 6, 0
 
+   * = * "BulletChars" virtual
     BulletStoredChars:		.fill MAX_BULLETS, 0
     BulletStoredColours: 	.fill MAX_BULLETS, 0
 
