@@ -78,15 +78,13 @@
 
 		CheckTimer:
 
-			lda ZP.PlayerTimer
+			ldx ZP.PlayerTimer
 			beq CanMove
 
 			dec ZP.PlayerTimer
 			rts
 
 		CanMove:	
-
-			ldx #PLAYER_SPRITE_ID
 
 			jsr SPRITE.CalculatePositionAddresses
 			jsr Control

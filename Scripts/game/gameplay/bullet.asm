@@ -4,7 +4,7 @@
 
 	BulletCharColour:	.byte WHITE + LUMINANCE_7 + 8
 						.byte WHITE + LUMINANCE_7 + 8
-						.byte YELLOW + LUMINANCE_5 + 8
+						.byte YELLOW + LUMINANCE_6 + 8
 						.byte WHITE + LUMINANCE_7 + 8
 						.byte RED + LUMINANCE_4 + 8
 

@@ -15,7 +15,7 @@ MAIN: {
 
 
 	.pc = $1001 "Basic Upstart"
-
+			
 	// BASIC line: 10 SYS 4109 (SYS $100D)
 	.word upstart_end    // Link to next line
 	.word 10             // Line number 10
@@ -80,7 +80,6 @@ Sprites:
 
 * = $0200 "Map Data" virtual
 .fill 2048, 64
-
 
 * = TED.COLOR_RAM "Colour RAM" virtual
 .fill 1024, 64
