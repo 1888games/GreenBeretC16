@@ -107,6 +107,8 @@
 
 	//DirOffset:	.byte 0, 16 - 1
 
+	* = * "CopySpriteData"
+
 	CopySpriteData: {
 
 			lda SpriteCharAddress_LSB, x
@@ -114,6 +116,11 @@
 
 			lda SpriteCharAddress_MSB, x
 			sta CopyCharBytes.Branch.Dest + 2
+
+			lda #0
+
+			ldy ZP.Stabbing
+			bne NoBullets
 
 			lda ZP.SpriteBullets, x
 			beq NoBullets

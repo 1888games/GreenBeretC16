@@ -16,6 +16,9 @@ ZP: {
 	Colour:					.byte 0
 	Frame:					.byte 0
 	SpriteID:				.byte 0
+    Cooldown:               .byte 0
+    Stabbing:               .byte 0
+    PreviousFrame:          .byte 0
 
 	Amount:					.byte 0
 	X:						.byte 0
@@ -117,7 +120,7 @@ ZP: {
     SpriteMoved:	
     PlayerMoved:			.byte 0
     EnemyMoved:				.fill MAX_ENEMIES, 0
-    BulletMoved:            .fill MAX_BULLETS, 02
+    BulletMoved:            .fill MAX_BULLETS, 0
     
 
    * = * "SpriteStoredChars" virtual

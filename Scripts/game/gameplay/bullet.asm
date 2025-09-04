@@ -93,7 +93,19 @@
 
 		IsKnife:
 
-			rts
+			lda ZP.Cooldown
+			beq Exit
+
+			jsr SPRITE.Restore1x1
+
+			lda ZP.PlayerOffset
+			sta ZP.PlayerState
+			inc ZP.PlayerDirty
+
+			lda ZP.PreviousFrame
+			sta ZP.PlayerFrame
+
+			jmp CancelBullet
 
 		NotKnife:
 
@@ -102,6 +114,8 @@
 
 
 		IsGrenade:
+
+		Exit:
 
 			rts
 
@@ -140,8 +154,7 @@
 			cmp #40
 			bcc NoWrapRight
 
-			lda #$FF
-			sta ZP.SpriteTimer, x
+			jmp CancelBullet
 
 
 		NoWrapRight:
@@ -151,7 +164,14 @@
 	}
 
 
+	CancelBullet: {
 
+			lda #$FF
+			sta ZP.SpriteTimer, x
+			rts
+
+
+	}
 
 		// a = bullet type?
 
