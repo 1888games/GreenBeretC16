@@ -347,7 +347,7 @@
 	DoStab:
 
 		pha
-
+		
 		lda ZP.PlayerFrame
 		cmp #3
 		bne NoAdjust
@@ -370,10 +370,10 @@
 		sta ZP.PlayerFrame
 		jsr FireWeapon
 
+		stx ZP.SpriteID
+
 		pla
 		sta ZP.PlayerState
-
-		stx ZP.SpriteID
 
 		lda #2
 		sta ZP.SpriteTimer, x

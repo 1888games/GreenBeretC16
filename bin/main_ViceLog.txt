@@ -23,7 +23,7 @@ Roberto Muscedere, June Tate-Gans, Pablo Roldan.
 This is free software with ABSOLUTELY NO WARRANTY.
 See the "About VICE" command for more info.
  
-Main: random seed was: 0x68b9eb42
+Main: random seed was: 0x68b9ebfb
 Main: command line was: C:\C64\Tools\Vice\xplus4.exe -8 Assets/disk.d64 -moncommands bin/main.vs bin/gb.prg
 Main: VICE system file directory: 'C:\C64\Tools\Vice\..'.
 Main: VICE system file search path: 'C:\C64\Tools\Vice;C:\C64\Tools\Vice\..'.
@@ -479,7 +479,7 @@ Sound: reSID: MOS6581, filter on, sampling rate 48000Hz - resampling, pass to 21
 VSync: Sync reset
 Monitor UI: 'C64 Pro*' font found, enabling PETSCII output.
 Monitor UI: using font 'C64 Pro Mono 9' (Family:C64 Pro Mono, Size:9, Variations:-) PETSCII:yes Terminal Scale:1.000000
-AUTOSTART: Injecting program data at $1001 (size $116e)
+AUTOSTART: Injecting program data at $1001 (size $116f)
 AUTOSTART: Ready
 AUTOSTART: Turning Warp mode off.
 AUTOSTART: Starting program.
@@ -501,10 +501,10 @@ MonitorYPos=626
 MonitorWidth=961
 MonitorHeight=659
 MonitorFont="C64 Pro Mono 9"
-Window0Height=1369
-Window0Width=3440
-Window0Xpos=0
-Window0Ypos=23
+Window0Height=722
+Window0Width=1046
+Window0Xpos=1135
+Window0Ypos=473
 FunctionLowName=""
 FunctionHighName=""
 RamSize=16
@@ -521,7 +521,7 @@ Drive8TrueEmulation=0
 DriveSoundEmulationVolume=1612
 FFMPEGVideoBitrate=200000
 
--default -logfile "E:\Dropbox\C64\Projects\Green Beret C16/bin/main_ViceLog.txt" +confirmonexit -saveres -monitorfont "C64 Pro Mono 9" -monitorxpos "2019" -monitorypos "626" -monitorwidth "961" -monitorheight "659" -windowxpos "0" -windowypos "23" -windowwidth "3440" -windowheight "1369" -functionlo "" -functionhi "" -ramsize "16" -TEDborders "2" +acia -joydev1 "2" -autostartprgmode "1" +drive8truedrive -drivesoundvolume "1612" -ffmpegvideobitrate "200000"
+-default -logfile "E:\Dropbox\C64\Projects\Green Beret C16/bin/main_ViceLog.txt" +confirmonexit -saveres -monitorfont "C64 Pro Mono 9" -monitorxpos "2019" -monitorypos "626" -monitorwidth "961" -monitorheight "659" -windowxpos "1135" -windowypos "473" -windowwidth "1046" -windowheight "722" -functionlo "" -functionhi "" -ramsize "16" -TEDborders "2" +acia -joydev1 "2" -autostartprgmode "1" +drive8truedrive -drivesoundvolume "1612" -ffmpegvideobitrate "200000"
 Mainlock: VICE thread initiating shutdown
 Mainlock: VICE thread is exiting
 Main: VICE thread has been joined.
