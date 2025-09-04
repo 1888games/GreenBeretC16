@@ -38,6 +38,8 @@ IRQ: {
 		lda #%10010000
     	sta $FF07
 
+  
+
 		asl $ff09	
 
 		:RestoreState()

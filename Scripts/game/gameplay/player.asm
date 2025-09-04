@@ -149,7 +149,7 @@
 
 		
 		lda ZP.PlayerFrame
-		sta ZP.PlayerOffset
+		sta ZP.PlayerOffset 
 
 		inc ZP.PlayerY
 		inc ZP.PlayerY
@@ -225,8 +225,15 @@
 		sta ZP.SpriteY, x
 
 		lda ZP.PlayerState
-		and #%11101111
 		cmp #STATE_CROUCH_RIGHT
+		bne IsNotCrouchingRight
+
+		inc ZP.SpriteX, x
+		jmp IsCrouching
+
+	IsNotCrouchingRight:
+
+		cmp #STATE_CROUCH_LEFT
 		beq IsCrouching
 		
 		inc ZP.SpriteY, x 
@@ -309,10 +316,8 @@
 
 	StabWeapon: {
 
-
-		
 		lda ZP.PlayerState
-		sta ZP.PlayerOffset
+		sta ZP.PlayerPreviousState
 		cmp #STATE_WALK_RIGHT
 		beq StabWalk
 
@@ -341,7 +346,19 @@
 
 	DoStab:
 
-		sta ZP.PlayerState
+		pha
+
+		lda ZP.PlayerFrame
+		cmp #3
+		bne NoAdjust
+
+		jsr SCREEN.CheckScrollAdjust
+
+		lda #2
+		sta ZP.PlayerFrame
+
+	NoAdjust:
+
 
 		inc ZP.PlayerDirty
 		inc ZP.Stabbing
@@ -353,13 +370,18 @@
 		sta ZP.PlayerFrame
 		jsr FireWeapon
 
+		pla
+		sta ZP.PlayerState
+
 		stx ZP.SpriteID
 
-		lda #0
+		lda #2
 		sta ZP.SpriteTimer, x
 		
-		lda #2
+		lda #5
 		sta ZP.Cooldown
+
+
 
 		rts
 	

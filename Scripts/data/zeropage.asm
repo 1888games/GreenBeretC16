@@ -84,6 +84,14 @@ ZP: {
     EnemyState:				.fill MAX_ENEMIES, 0
     BulletState:			.fill MAX_BULLETS, 0
 
+    SpriteMasterState:     
+    PlayerMasterState:      .byte 0
+    EnemyMasterState:       .fill MAX_ENEMIES, 0
+
+    SpritePreviousState:    
+    PlayerPreviousState:    .byte 0
+    EnemyPreviousState:     .fill MAX_ENEMIES, 0
+
     SpriteOffset:			
     PlayerOffset:			.byte 0
     EnemyOffset:			.fill MAX_ENEMIES, 0

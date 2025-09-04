@@ -98,7 +98,7 @@
 
 			jsr SPRITE.Restore1x1
 
-			lda ZP.PlayerOffset
+			lda ZP.PlayerPreviousState
 			sta ZP.PlayerState
 			inc ZP.PlayerDirty
 
