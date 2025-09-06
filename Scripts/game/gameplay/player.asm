@@ -24,14 +24,16 @@
 		stx ZP.PlayerBullets
 		stx ZP.PlayerState
 		stx ZP.FireFrames
-		sta ZP.Cooldown
-		sta ZP.Stabbing
+		stx ZP.Cooldown
+		stx ZP.Stabbing
+		stx ZP.PlayerTimer
+		stx ZP.PlayerTime
 		//sta ZP.PlayerWeapon
 
 		lda #1
 		sta ZP.PlayerDirty
 		sta ZP.PlayerMoved
-		sta ZP.PlayerTimer
+		
 		sta ZP.PlayerBullets
 
 		lda #WEAPON_FLAME
@@ -76,7 +78,6 @@
 
 	
 	EvenFrameUpdate: {
-
 
 		CheckTimer:
 
@@ -251,6 +252,7 @@
 
 	Control: {
 
+
 		lda ZP.Cooldown
 		beq Ready
 
@@ -258,7 +260,7 @@
 		rts
 
 	Ready:
-	
+
 		lda ZP.JOY_READING
 		and #INPUT.joyRightMask
 		bne NotRight
@@ -442,8 +444,7 @@
 
 	GoRight: {
 
-
-		
+	
 		lda ZP.PlayerState
 		cmp #STATE_WALK_RIGHT
 		beq AlreadyWalking

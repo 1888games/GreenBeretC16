@@ -74,9 +74,13 @@
 
 		ldy #0
 		lda ZP.SpriteStoredChars + (MAX_SPRITES * 0), x
+		cmp #PLAYER_CHAR_START
+		bcs Skip1
 		sta (ZP.ScreenAddress), y
 		lda ZP.SpriteStoredColours + (MAX_SPRITES * 0), x
 		sta (ZP.ColourAddress), y
+
+	Skip1:
 
 		iny 
 		lda ZP.SpriteStoredChars + (MAX_SPRITES * 1), x

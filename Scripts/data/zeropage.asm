@@ -79,36 +79,68 @@ ZP: {
     EnemyY:					.fill MAX_ENEMIES, 0
     BulletY:				.fill MAX_BULLETS, 0
 
+
     SpriteState:			
     PlayerState:			.byte 0
     EnemyState:				.fill MAX_ENEMIES, 0
     BulletState:			.fill MAX_BULLETS, 0
 
-    SpriteMasterState:     
-    PlayerMasterState:      .byte 0
-    EnemyMasterState:       .fill MAX_ENEMIES, 0
 
-    SpritePreviousState:    
-    PlayerPreviousState:    .byte 0
-    EnemyPreviousState:     .fill MAX_ENEMIES, 0
+   * = * "SpriteStoredChars" virtual
+    SpriteStoredChars:      .fill MAX_SPRITES * 6, 0
+    SpriteStoredColours:    .fill MAX_SPRITES * 6, 0
 
-    SpriteOffset:			
-    PlayerOffset:			.byte 0
-    EnemyOffset:			.fill MAX_ENEMIES, 0
+   * = * "BulletChars" virtual
+    BulletStoredChars:      .fill MAX_BULLETS, 0
+    BulletStoredColours:    .fill MAX_BULLETS, 0
 
+
+    * = * "SpriteFrame" virtual
+    SpriteFrame:    
+    PlayerFrame:            .byte 0
+    EnemyFrame:             .fill MAX_ENEMIES, 0
+
+
+
+    * = * "SpriteTimer" virtual
     SpriteTimer:			
     PlayerTimer:			.byte 0
     EnemyTimer:				.fill MAX_ENEMIES, 0
-    BulletTimer:			.fill MAX_BULLETS, 0
+    BulletTimer:	   		.fill MAX_BULLETS, 0
 
+
+    * = $100 "SpriteTime" virtual
     SpriteTime:				
     PlayerTime:				.byte 0
     EnemyTime:				.fill MAX_ENEMIES, 0
 
+
+      * = * "SpriteColour" virtual
     SpriteColour:
     PlayerColour:			.byte 0
     EnemyColour:			.fill MAX_ENEMIES, 0
 
+      * = * "SpriteOffset" virtual
+    SpriteOffset:           
+    PlayerOffset:           .byte 0
+    EnemyOffset:            .fill MAX_ENEMIES, 0
+
+    *  = * "SpriteMasterState" virtual
+    SpriteMasterState:     
+    PlayerMasterState:      .byte 0
+    EnemyMasterState:       .fill MAX_ENEMIES, 0
+
+  * = * "SpritePreviousState" virtual
+    SpritePreviousState:    
+    PlayerPreviousState:    .byte 0
+    EnemyPreviousState:     .fill MAX_ENEMIES, 0
+
+
+    EnemyType:              .fill MAX_ENEMIES, 0
+
+
+
+  * = * "SpriteBullets" virtual
     SpriteBullets:			
     PlayerBullets:			.byte 0
     EnemyBullets:			.fill MAX_ENEMIES, 0
@@ -116,10 +148,6 @@ ZP: {
     SpriteWeapon:
     PlayerWeapon:			.byte 0
     EnemyWeapon:			.fill MAX_ENEMIES, 0
-
-    SpriteFrame:	
-    PlayerFrame:			.byte 0
-    EnemyFrame:				.fill MAX_ENEMIES, 0
 
     SpriteDirty:
     PlayerDirty:			.byte 0
@@ -130,14 +158,6 @@ ZP: {
     EnemyMoved:				.fill MAX_ENEMIES, 0
     BulletMoved:            .fill MAX_BULLETS, 0
     
-
-   * = * "SpriteStoredChars" virtual
-    SpriteStoredChars:		.fill MAX_SPRITES * 6, 0
-    SpriteStoredColours:	.fill MAX_SPRITES * 6, 0
-
-   * = * "BulletChars" virtual
-    BulletStoredChars:		.fill MAX_BULLETS, 0
-    BulletStoredColours: 	.fill MAX_BULLETS, 0
 
 
 	* = * "End of ZP" virtual

@@ -30,13 +30,14 @@ MAIN: {
 
 	Entry: {
 
+	
 		sei
 
 		sta BANK_IN_RAM 
 		jsr IRQ.SetMainIRQ
 
 		cli
-
+ 
 		jmp GAME.Show
 
 	}
@@ -62,6 +63,7 @@ MAIN: {
 
 #import "scripts/game/system/screen.asm"
 #import "scripts/game/gameplay/player.asm"
+#import "scripts/game/gameplay/enemy.asm"
 #import "scripts/game/gameplay/bullet.asm"
 #import "scripts/game/system/sprites.asm"
 #import "scripts/data/sprite_data.asm"

@@ -102,6 +102,9 @@
 
 
 
+.label ENEMY_FOOT_SOLDIER = 0
+.label ENEMY_GUN_SOLIDER = 1
+
 
 
 

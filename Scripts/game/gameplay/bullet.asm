@@ -17,10 +17,10 @@
 
 		Loop:
 
-			sta ZP.BulletTimer, x
+			sta ZP.EnemyTimer, x
 
 			inx
-			cpx #MAX_BULLETS
+			cpx #MAX_BULLETS + MAX_SPRITES - 1
 			bcc Loop
 
 

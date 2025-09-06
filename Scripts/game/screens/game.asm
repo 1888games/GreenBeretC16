@@ -37,6 +37,9 @@
 		jsr PLAYER.Initialise
 		jsr BULLET.Initialise
 
+		ldy #0
+		jsr ENEMY.Spawn
+
 		jsr DrawHud
 
 		lda #1
@@ -122,6 +125,8 @@
 	
 		jsr MAIN.WaitForIRQ
 
+		inc TED.BORDER_COLOR
+
 		jsr PLAYER.FrameUpdate
 
 		lda ZP.FrameSwitch
@@ -130,11 +135,17 @@
 	EvenFrame:
 
 		jsr PLAYER.EvenFrameUpdate 
+		jsr ENEMY.FrameUpdate
+
+		dec TED.BORDER_COLOR
+
 		jmp Loop
 
 	OddFrame:
 
 		jsr BULLET.OddFrameUpdate
+
+		dec TED.BORDER_COLOR
 
 		jmp Loop
 	}
