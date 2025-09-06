@@ -90,9 +90,18 @@
 		CanMove:	
 
 			jsr SPRITE.CalculatePositionAddresses
+
+			lda ZP.JustScrolled
+			bmi NoRestore
+
+			jsr SPRITE.RestoreChars
+
+		NoRestore:
+
 			jsr Control
 		
 			ldx #PLAYER_SPRITE_ID
+			inc ZP.PlayerDirty
 
 			jsr SPRITE.Draw
 
@@ -393,6 +402,13 @@
 
 	GoLeft: {
 
+		lda ZP.PlayerX
+		bne Okay
+
+		rts
+
+	Okay:
+
 		lda ZP.PlayerState
 		cmp #STATE_CROUCH_LEFT
 		bne NotCrouching
@@ -426,7 +442,7 @@
 
 
 		dec ZP.PlayerX
-
+	
 		ldx #0
 	//	stx ZP.PlayerBullets
 		jsr SPRITE.RestoreChars

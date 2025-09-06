@@ -50,11 +50,15 @@
 
 		ldy #0
 		lda ZP.BulletStoredChars - MAX_SPRITES, x
+		cmp #PLAYER_CHAR_START
+		bcs Skip
 		sta (ZP.ScreenAddress), y
 
 		lda ZP.BulletStoredColours - MAX_SPRITES, x
 		sta (ZP.ColourAddress), y
 
+	Skip:
+	
 
 		rts
 

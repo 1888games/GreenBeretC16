@@ -84,9 +84,13 @@
 
 		iny 
 		lda ZP.SpriteStoredChars + (MAX_SPRITES * 1), x
+		cmp #PLAYER_CHAR_START
+		bcs Skip2
 		sta (ZP.ScreenAddress), y
 		lda ZP.SpriteStoredColours + (MAX_SPRITES * 1), x
 		sta (ZP.ColourAddress), y
+
+	Skip2:
 
 		lda ZP.SpriteState, x
 		and #%11101111
@@ -100,28 +104,43 @@
 
 		ldy #40
 		lda ZP.SpriteStoredChars + (MAX_SPRITES * 2), x
+		cmp #PLAYER_CHAR_START
+		bcs Skip3
 		sta (ZP.ScreenAddress), y
 		lda ZP.SpriteStoredColours + (MAX_SPRITES * 2), x
 		sta (ZP.ColourAddress), y
 
+ 	Skip3:
+
 		iny 
 		lda ZP.SpriteStoredChars + (MAX_SPRITES * 3), x
 		sta (ZP.ScreenAddress), y
+		cmp #PLAYER_CHAR_START
+		bcs Skip4
 		lda ZP.SpriteStoredColours + (MAX_SPRITES * 3), x
 		sta (ZP.ColourAddress), y
 
+	Skip4:
+
 		ldy #80
 		lda ZP.SpriteStoredChars + (MAX_SPRITES * 4), x
+		cmp #PLAYER_CHAR_START
+		bcs Skip5
 		sta (ZP.ScreenAddress), y
 		lda ZP.SpriteStoredColours + (MAX_SPRITES * 4), x
 		sta (ZP.ColourAddress), y
 
+	Skip5:
+
 		iny 
 		lda ZP.SpriteStoredChars + (MAX_SPRITES * 5), x
+		cmp #PLAYER_CHAR_START
+		bcs Skip6
 		sta (ZP.ScreenAddress), y
 		lda ZP.SpriteStoredColours + (MAX_SPRITES * 5), x
 		sta (ZP.ColourAddress), y
 
+	Skip6:
 
 		rts
 	}
